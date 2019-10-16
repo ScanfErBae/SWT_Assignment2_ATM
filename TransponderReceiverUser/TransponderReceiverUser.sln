@@ -9,7 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverApplication", "TransponderReceiverApplication\TransponderReceiverApplication.csproj", "{5BF5A5A7-E181-4321-A362-D16F4849586A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderOutput", "TransponderOutput\TransponderOutput.csproj", "{9CF1AA83-7AA7-4BD9-9C36-A85C69F94C8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransponderOutput", "TransponderOutput\TransponderOutput.csproj", "{9CF1AA83-7AA7-4BD9-9C36-A85C69F94C8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderFilter", "TransponderFilter\TransponderFilter.csproj", "{D7BE8990-A1E6-4F66-BF25-75219C103BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderFilter.Test.Unit", "TransponderFilter.Test.Unit\TransponderFilter.Test.Unit.csproj", "{43DF30E1-6CF7-4FFE-B2C4-EE16A9D046EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{9CF1AA83-7AA7-4BD9-9C36-A85C69F94C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF1AA83-7AA7-4BD9-9C36-A85C69F94C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF1AA83-7AA7-4BD9-9C36-A85C69F94C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BE8990-A1E6-4F66-BF25-75219C103BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BE8990-A1E6-4F66-BF25-75219C103BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BE8990-A1E6-4F66-BF25-75219C103BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BE8990-A1E6-4F66-BF25-75219C103BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43DF30E1-6CF7-4FFE-B2C4-EE16A9D046EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43DF30E1-6CF7-4FFE-B2C4-EE16A9D046EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43DF30E1-6CF7-4FFE-B2C4-EE16A9D046EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43DF30E1-6CF7-4FFE-B2C4-EE16A9D046EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
