@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace TransponderOutput
 {
-    class Program
+    class FileOutput
     {
-        static void Main(string[] args)
+        public void Print(string path, string contents)
         {
-
+            System.IO.File.WriteAllText(path, contents);
         }
     }
 }
