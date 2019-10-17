@@ -7,10 +7,10 @@ using TransponderReceiver;
 
 namespace TransponderFilter
 {
-    public class FilterRelevantPlanes
+    public class FilterRelevantPlanes : IRelevantPlane
     {
         private ITransponderReceiver receiver;
-
+      
         public FilterRelevantPlanes(ITransponderReceiver receiver)
         {
             // This will store the real or the fake transponder data receiver
@@ -20,6 +20,7 @@ namespace TransponderFilter
             this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
         }
 
+      
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             // Just display data
@@ -31,9 +32,13 @@ namespace TransponderFilter
                 if (10000 <= Int32.Parse(input[1]) && Int32.Parse(input[1]) <= 90000 &&
                     10000 <= Int32.Parse(input[2]) && Int32.Parse(input[2]) <= 90000 && 500 <= Int32.Parse(input[3]) &&
                     Int32.Parse(input[3]) <= 20000)
-                {
-                    System.Console.WriteLine($"Transponderdata {data}");
+                    {
+                    //System.Console.WriteLine($"Transponderdata {data}");
+                        NewRelevantPlane(data);
+                        System.Console.WriteLine("relevant fly");
+
                 }
+
                 else
                 {
                     System.Console.WriteLine("Irrelevant fly");
@@ -41,5 +46,20 @@ namespace TransponderFilter
                 
             }
         }
+
+        public event EventHandler<RelevantPlaneEventArgs> RelevantPlaneEvent;
+
+        protected virtual void OnRelevantPlaneEvent(RelevantPlaneEventArgs e)
+        {
+            RelevantPlaneEvent?.Invoke(this, e);
+        }
+
+        public void NewRelevantPlane(string NewPlane)
+        {
+            OnRelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
+        }
     }
+
+
+
 }

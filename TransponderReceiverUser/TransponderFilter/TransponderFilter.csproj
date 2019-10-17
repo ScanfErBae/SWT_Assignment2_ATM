@@ -46,9 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
     <Compile Include="FilterRelevantPlanes.cs" />
+    <Compile Include="IRelevantPlane.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelevantPlane.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
