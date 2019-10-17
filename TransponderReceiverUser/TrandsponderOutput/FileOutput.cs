@@ -4,11 +4,16 @@ using System.Text;
 
 namespace TransponderOutput
 {
-    class FileOutput
+    public class FileOutput
     {
+        public FileOutput()
+        {
+
+        }
+
         public void Print(string path, string contents)
         {
-            System.IO.File.WriteAllText(path, contents);
+            System.IO.File.AppendAllText(path, contents);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TransponderOutput
     {
         static void Main(string[] args)
         {
-            string text = "Dette er en test";
+            string text = "Dette er en test\n";
 
             string path =
                 @"C:\SWT\AfleveringATM\SWT_Assignment2_ATM\TransponderReceiverUser\TrandsponderOutput\OutputFile\Output.txt";
