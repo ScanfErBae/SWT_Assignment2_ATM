@@ -11,6 +11,8 @@ namespace ConditionDetection
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
         public int ZCoordinate { get; set; }
+
+        public string TimeStamp { get; set; }
         public string Tag { get; set; }
 
     }

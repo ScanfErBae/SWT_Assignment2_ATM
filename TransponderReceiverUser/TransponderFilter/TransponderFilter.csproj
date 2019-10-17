@@ -57,6 +57,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConditionDetection\ConditionDetection.csproj">
+      <Project>{11e76336-dfca-4391-970c-1b97705158fd}</Project>
+      <Name>ConditionDetection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TransponderReceiverUser\TransponderReceiverUser.csproj">
       <Project>{ad9e07f6-3d14-47c9-955e-ff20c7fe5433}</Project>
       <Name>TransponderReceiverUser</Name>

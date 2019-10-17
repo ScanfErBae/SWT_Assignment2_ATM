@@ -14,5 +14,10 @@ namespace TransponderFilter
     public interface IRelevantPlane 
     {
         event EventHandler<RelevantPlaneEventArgs> RelevantPlaneEvent;
+        event EventHandler<RelevantPlaneEventArgs> IrrelevantPlaneEvent;
     }
+    //public interface IIrrelevantPlane
+    //{
+    //    event EventHandler<RelevantPlaneEventArgs> IrrelevantPlaneEvent;
+    //}
 }

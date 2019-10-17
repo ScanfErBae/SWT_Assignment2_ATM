@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TransponderReceiver;
+using ConditionDetection;
+
 
 namespace TransponderFilter
 {
@@ -11,6 +13,7 @@ namespace TransponderFilter
     {
         private ITransponderReceiver receiver;
       
+        
         public FilterRelevantPlanes(ITransponderReceiver receiver)
         {
             // This will store the real or the fake transponder data receiver
@@ -19,6 +22,7 @@ namespace TransponderFilter
             // Attach to the event of the real or the fake TDR
             this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
         }
+
 
       
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
@@ -33,30 +37,44 @@ namespace TransponderFilter
                     10000 <= Int32.Parse(input[2]) && Int32.Parse(input[2]) <= 90000 && 500 <= Int32.Parse(input[3]) &&
                     Int32.Parse(input[3]) <= 20000)
                     {
-                    //System.Console.WriteLine($"Transponderdata {data}");
+                       
+                       
+                        
+                        //System.Console.WriteLine($"Transponderdata {data}");
                         NewRelevantPlane(data);
-                        System.Console.WriteLine("relevant fly");
-
+                        //System.Console.WriteLine("relevant fly");
+                        
                 }
 
                 else
                 {
-                    System.Console.WriteLine("Irrelevant fly");
+                    NewIrrelevantPlane(data);
+                    //System.Console.WriteLine("Irrelevant fly");
                 }
                 
             }
         }
 
         public event EventHandler<RelevantPlaneEventArgs> RelevantPlaneEvent;
+        public event EventHandler<RelevantPlaneEventArgs> IrrelevantPlaneEvent;
 
         protected virtual void OnRelevantPlaneEvent(RelevantPlaneEventArgs e)
         {
             RelevantPlaneEvent?.Invoke(this, e);
         }
 
+        protected virtual void OnirrelevantPlaneEvent(RelevantPlaneEventArgs e)
+        {
+            IrrelevantPlaneEvent?.Invoke(this, e);
+        }
         public void NewRelevantPlane(string NewPlane)
         {
             OnRelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
+        }
+
+        public void NewIrrelevantPlane(string NewPlane)
+        {
+            OnirrelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
         }
     }
 

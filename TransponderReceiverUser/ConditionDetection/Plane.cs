@@ -6,28 +6,37 @@ using System.Threading.Tasks;
 
 namespace ConditionDetection
 {
-    public class Plane : IPlane
+    public class PlaneClass : IPlane
     {
         private PlaneState _planeState;
         private int _oldX;
         private int _oldY;
         private int _oldZ;
-        private string _tag;
+        public string _tag { private set; get; }
+        private string _timeStamp;
+        private int _velocity;
+        private int _course;
         public event EventHandler<AirplaneArgs> NewAirPlanesEvent;
 
-        public Plane()
+        public PlaneClass(string tag, int x, int y, int z, string time)
         {
-            _planeState = new PlaneStateSafe();
+            _tag = tag;
+            _oldX = x;
+            _oldY = y;
+            _oldZ = z;
+            _timeStamp = time;
+          //  _planeState = new PlaneStateSafe();
         }
-        public void SetCoordinates(int newX, int newY, int newZ)
+        public void SetCoordinates(int newX, int newY, int newZ, string newTime)
         {
             if (newX != _oldX || newY != _oldY || newZ != _oldZ)
             {
-                OnCoordsChangedEvent(new AirplaneArgs {XCoordinate = newX, YCoordinate = newY, ZCoordinate = newZ});
+                OnCoordsChangedEvent(new AirplaneArgs {XCoordinate = newX, YCoordinate = newY, ZCoordinate = newZ, TimeStamp = newTime});
                 _oldX = newX;
                 _oldY = newY;
                 _oldZ = newZ;
-                _planeState.HandleNewPlaneState(this);
+                _timeStamp = newTime;
+               // _planeState.HandleNewPlaneState(this);
             }
 
         }
