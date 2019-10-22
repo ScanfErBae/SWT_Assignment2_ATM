@@ -18,7 +18,7 @@ namespace TransponderFilter
         {
             _planes = new List<PlaneClass>();
             relevantPlane.RelevantPlaneEvent += HandleRelevantPlaneEvent;
-            relevantPlane.IrrelevantPlaneEvent += HandleIrrelevantPlaneEvent;
+            relevantPlane.NotRelevantPlaneEvent += HandleIrrelevantPlaneEvent;
 
         }
 

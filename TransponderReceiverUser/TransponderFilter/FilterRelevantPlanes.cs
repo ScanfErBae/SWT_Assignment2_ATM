@@ -12,6 +12,8 @@ namespace TransponderFilter
     public class FilterRelevantPlanes : IRelevantPlane
     {
         private ITransponderReceiver receiver;
+        public int RelevantPlanes;
+        public int NotRelevantPlanes;
       
         
         public FilterRelevantPlanes(ITransponderReceiver receiver)
@@ -27,6 +29,8 @@ namespace TransponderFilter
       
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
+            RelevantPlanes = 0;
+            NotRelevantPlanes = 0;
             // Just display data
             foreach (var data in e.TransponderData)
             {
@@ -37,44 +41,43 @@ namespace TransponderFilter
                     10000 <= Int32.Parse(input[2]) && Int32.Parse(input[2]) <= 90000 && 500 <= Int32.Parse(input[3]) &&
                     Int32.Parse(input[3]) <= 20000)
                     {
-                       
-                       
-                        
                         //System.Console.WriteLine($"Transponderdata {data}");
                         NewRelevantPlane(data);
+                        ++RelevantPlanes;
                         //System.Console.WriteLine("relevant fly");
-                        
-                }
+
+                    }
 
                 else
                 {
-                    NewIrrelevantPlane(data);
-                    //System.Console.WriteLine("Irrelevant fly");
+                    NewNotRelevantPlane(data);
+                    ++NotRelevantPlanes;
+                    //System.Console.WriteLine("NotRelevant fly");
                 }
                 
             }
         }
 
         public event EventHandler<RelevantPlaneEventArgs> RelevantPlaneEvent;
-        public event EventHandler<RelevantPlaneEventArgs> IrrelevantPlaneEvent;
+        public event EventHandler<RelevantPlaneEventArgs> NotRelevantPlaneEvent;
 
         protected virtual void OnRelevantPlaneEvent(RelevantPlaneEventArgs e)
         {
             RelevantPlaneEvent?.Invoke(this, e);
         }
 
-        protected virtual void OnirrelevantPlaneEvent(RelevantPlaneEventArgs e)
+        protected virtual void OnNotRelevantPlaneEvent(RelevantPlaneEventArgs e)
         {
-            IrrelevantPlaneEvent?.Invoke(this, e);
+            NotRelevantPlaneEvent?.Invoke(this, e);
         }
         public void NewRelevantPlane(string NewPlane)
         {
             OnRelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
         }
 
-        public void NewIrrelevantPlane(string NewPlane)
+        public void NewNotRelevantPlane(string NewPlane)
         {
-            OnirrelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
+            OnNotRelevantPlaneEvent(new RelevantPlaneEventArgs { Plane = NewPlane });
         }
     }
 
