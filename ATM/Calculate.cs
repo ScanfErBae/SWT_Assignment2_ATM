@@ -11,13 +11,19 @@ namespace ATM
       public double CalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2)
         {
             //Calculate time
-            int yearCal = (year2 - year1) * 12 * 30 * 24 * 60 * 60;
-            int montCal = (month2 - month1) * 30 * 24 * 60 * 60;
-            int dayCal = (day2 - day1) * 24 * 60 * 60;
-            int hourCal = (hour2 - hour1) * 60 * 60;
-            int minCal = (min2 - min1) * 60;
-            int secCal = (sec2 - sec1);
-            return 20;
+            int yearCal = Math.Abs(year2 - year1) * 12 * 30 * 24 * 60 * 60;
+            int montCal = Math.Abs(month2 - month1) * 30 * 24 * 60 * 60;
+            int dayCal = Math.Abs(day2 - day1) * 24 * 60 * 60;
+            int hourCal = Math.Abs(hour2 - hour1) * 60 * 60;
+            int minCal = Math.Abs(min2 - min1) * 60;
+            int secCal = Math.Abs(sec2 - sec1);
+            int totalTime = yearCal + montCal + dayCal + hourCal + minCal + secCal; 
+
+            //Calculate distance
+            double distance = Math.Sqrt(((x2 - x1) ^ 2) + ((y2 - y1) ^ 2));
+
+            //Calculate Velocity
+            return distance / totalTime;
         }
 
         public double CalculateBearing(int lat1, int lon1, int lat2, int lon2)

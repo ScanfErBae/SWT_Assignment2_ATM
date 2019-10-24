@@ -47,12 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculate.cs" />
+    <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="FileOutput.cs" />
     <Compile Include="EventToList.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="DataSplitter.cs" />
     <Compile Include="ICalculate.cs" />
     <Compile Include="IFilter.cs" />
     <Compile Include="IDataSplitter.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="IPlane.cs" />
     <Compile Include="ISeparationCondition.cs" />
     <Compile Include="Plane.cs" />
