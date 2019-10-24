@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TransponderOutput
+namespace ATM
 {
     public interface IOutput
     {

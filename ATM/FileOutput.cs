@@ -4,7 +4,7 @@ using System.Text;
 using TransponderReceiver;
 
 
-namespace TransponderOutput
+namespace ATM
 {
     public class FileOutput
     {
