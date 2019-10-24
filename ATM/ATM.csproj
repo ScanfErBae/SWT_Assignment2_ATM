@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculate.cs" />
+    <Compile Include="EventToList.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="DataSplitter.cs" />
     <Compile Include="ICalculate.cs" />

@@ -24,13 +24,14 @@ namespace ATM
         public double Bearing { get; set; }
 
         public double Velocity { get; set; }
+        public bool Relevant { get; set; }
 
         private ICalculate _calculate;
 
-        public Plane(ICalculate calculate, string tag, int X, int Y, int Z, int year, int month, int day, int hour,
+        public Plane(string tag, int X, int Y, int Z, int year, int month, int day, int hour,
             int minute, int sec, int ms)
         {
-            this._calculate = calculate;
+            //this._calculate = calculate;
             this.XCoordinate = X;
             this.YCoordinate = Y;
             this.ZCoordinate = Z;
