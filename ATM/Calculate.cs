@@ -10,9 +10,13 @@ namespace ATM
     {
       public double CalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2)
         {
-            //Calculate distance
-            double distance = 0;
-            distance = Math.Sqrt(((x2 - x1) ^ 2) + ((y2 - y1) ^ 2));
+            //Calculate time
+            int yearCal = (year2 - year1) * 12 * 30 * 24 * 60 * 60;
+            int montCal = (month2 - month1) * 30 * 24 * 60 * 60;
+            int dayCal = (day2 - day1) * 24 * 60 * 60;
+            int hourCal = (hour2 - hour1) * 60 * 60;
+            int minCal = (min2 - min1) * 60;
+            int secCal = (sec2 - sec1);
             return 20;
         }
 
