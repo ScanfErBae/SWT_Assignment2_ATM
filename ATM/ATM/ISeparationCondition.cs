@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IFilter
+    interface ISeparationCondition
     {
-        
+        void Separation(int value);
     }
 }

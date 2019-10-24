@@ -12,16 +12,16 @@ namespace ATM
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
         public int ZCoordinate { get; set; }
-        public string TimeYear { get; set; }
-        public string TimeMonth { get; set; }
-        public string TimeDay { get; set; }
-        public string TimeHour { get; set; }
-        public string TimeMinute { get; set; }
-        public string TimeSecond { get; set; }
-        public string TimeMilliSecond { get; set; }
+        public int TimeYear { get; set; }
+        public int TimeMonth { get; set; }
+        public int TimeDay { get; set; }
+        public int TimeHour { get; set; }
+        public int TimeMinute { get; set; }
+        public int TimeSecond { get; set; }
+        public int TimeMillisecond { get; set;}
     }
     interface IDataSplitter
     {
-        event EventHandler<AirplaneArgs> DataReceivedEvent;
+        event EventHandler<List<AirplaneArgs>> DataReceivedEvent;
     }
 }
