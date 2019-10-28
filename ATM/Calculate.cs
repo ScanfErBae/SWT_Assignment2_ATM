@@ -8,37 +8,37 @@ namespace ATM
 {
     public class Calculate : ICalculate
     {
-      public double CalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2)
+      public double CalculateVelocity(Plane oldPlane, Plane newPlane)
         {
-            if (x1 < 10000 ||x2 < 10000 || y1 < 10000 || y2 < 10000 || x1 > 90000 || x2 > 90000 || y1 > 90000 || y2 > 90000)
+            if (oldPlane.XCoordinate < 10000 ||newPlane.XCoordinate < 10000 || oldPlane.YCoordinate < 10000 || newPlane.YCoordinate < 10000 || oldPlane.XCoordinate > 90000 || newPlane.XCoordinate > 90000 || oldPlane.YCoordinate > 90000 || newPlane.YCoordinate > 90000)
             {
                 return 0;
             }
             //Calculate time
-            double yearCal = Math.Abs(year2 - year1) * 12 * 30 * 24 * 60 * 60;
-            double montCal = Math.Abs(month2 - month1) * 30 * 24 * 60 * 60;
-            double dayCal = Math.Abs(day2 - day1) * 24 * 60 * 60;
-            double hourCal = Math.Abs(hour2 - hour1) * 60 * 60;
-            double minCal = Math.Abs(min2 - min1) * 60;
-            double secCal = Math.Abs(sec2 - sec1);
-            double msCal = (Math.Abs(ms2 - ms1));
+            double yearCal = Math.Abs(newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60;
+            double montCal = Math.Abs(newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60;
+            double dayCal = Math.Abs(newPlane.CurrentTime.Day- oldPlane.CurrentTime.Day) * 24 * 60 * 60;
+            double hourCal = Math.Abs(newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60;
+            double minCal = Math.Abs(newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60;
+            double secCal = Math.Abs(newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second);
+            double msCal = (Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond));
             msCal = msCal / 1000;
             double totalTimeInSec = yearCal + montCal + dayCal + hourCal + minCal + secCal + msCal;
 
 
             //Calculate distance
-            double distance = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+            double distance = Math.Sqrt(Math.Pow((newPlane.XCoordinate - oldPlane.XCoordinate), 2) + Math.Pow((newPlane.YCoordinate - oldPlane.YCoordinate), 2));
 
             //Calculate Velocity
             return distance / totalTimeInSec;
         }
 
-        public double CalculateBearing(double lat1, double lon1, double lat2, double lon2)
+        public double CalculateBearing(Plane oldPlane, Plane newPlane)
         {
             double Rad2Deg = 180.0 / Math.PI;
             double Deg2Rad = Math.PI / 180.0;
-            double dx = lat2 - lat1;
-            double dy = lon2 - lon1;
+            double dx = newPlane.YCoordinate - oldPlane.YCoordinate;
+            double dy = newPlane.XCoordinate - oldPlane.XCoordinate;
             double Bearing = Math.Atan2(dy, dx) * Rad2Deg;
             if (Bearing < 0)
             {

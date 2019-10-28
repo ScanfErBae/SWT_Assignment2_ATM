@@ -16,7 +16,7 @@ namespace ATM.Test.Unit
     {
         
         private DataSplitter _uut;
-        private List<AirplaneArgs> receivedArgs;
+        private List<Plane> receivedArgs;
         private int NumberOfEvents;
         private ITransponderReceiver receiver;
 
@@ -33,7 +33,7 @@ namespace ATM.Test.Unit
 
             _uut.DataReceivedEvent += (s, a) =>
             {
-                receivedArgs = a;
+                receivedArgs = a._planes;
                 NumberOfEvents++;
             };
         }

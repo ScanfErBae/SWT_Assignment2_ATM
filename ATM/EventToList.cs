@@ -18,14 +18,14 @@ namespace ATM
             this._filter.RelevantAirplanesReceivedEvent += ToList;
         }
 
-        private void ToList(object sender, List<RelevantAirplaneArgs> e)
+        private void ToList(object sender, RelevantAirplaneArgs e)
         {
             foreach (Plane plane in _relevantPlanesList)
             {
                 plane.Relevant = false;
             }
 
-            foreach (RelevantAirplaneArgs newPlane in e)
+            foreach (Plane newPlane in e._relevantPlanes)
             {
                 bool test = false;
                 if (_relevantPlanesList != null)
@@ -35,8 +35,7 @@ namespace ATM
                         if (newPlane.Tag == oldPlane.Tag)
                         {
                             oldPlane.UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
-                                newPlane.TimeYear, newPlane.TimeMonth, newPlane.TimeDay, newPlane.TimeHour,
-                                newPlane.TimeMinute, newPlane.TimeSecond, newPlane.TimeMillisecond);
+                                newPlane.CurrentTime);
                             test = true;
                             oldPlane.Relevant = true;
                         }
@@ -45,8 +44,7 @@ namespace ATM
                     if (!test)
                     {
                         _relevantPlanesList.Add(new Plane(newPlane.Tag, newPlane.XCoordinate, newPlane.YCoordinate,
-                            newPlane.ZCoordinate, newPlane.TimeYear, newPlane.TimeMonth, newPlane.TimeDay,
-                            newPlane.TimeHour, newPlane.TimeMinute, newPlane.TimeSecond, newPlane.TimeMillisecond));
+                            newPlane.ZCoordinate, newPlane.CurrentTime));
                         _relevantPlanesList.ElementAt(_relevantPlanesList.Count - 1).Relevant = true;
                     }
                 }
@@ -66,7 +64,8 @@ namespace ATM
             {
                 _relevantPlanesList.Remove(plane);
             }
-        }
 
+
+        }
     }
 }

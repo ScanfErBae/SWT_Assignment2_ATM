@@ -10,14 +10,14 @@ namespace ATM
 {
     public class DataSplitter : IDataSplitter
     {
-        private List<AirplaneArgs> planeList;
+        private List<Plane> planeList = new List<Plane>();
         private ITransponderReceiver _receiver;
         public DataSplitter(ITransponderReceiver receiver)
         {
             this._receiver = receiver;
             this._receiver.TransponderDataReady += DataSplit;
         }
-        public event EventHandler<List<AirplaneArgs>> DataReceivedEvent;
+        public event EventHandler<AirplaneArgs> DataReceivedEvent;
 
         private void DataSplit(object sender, RawTransponderDataEventArgs e)
         {
@@ -27,10 +27,10 @@ namespace ATM
                 string[] input = data.Split(';');
                 NewPlaneReceived(input);
             }
-            OnDataReceivedEvent(planeList);
+            OnDataReceivedEvent(new AirplaneArgs {_planes = planeList});
         }
 
-        protected virtual void OnDataReceivedEvent(List<AirplaneArgs> e)
+        protected virtual void OnDataReceivedEvent(AirplaneArgs e)
         {
             DataReceivedEvent?.Invoke(this, e);
         }
@@ -39,14 +39,13 @@ namespace ATM
         // Time is separated into year, months, day, etc... 
         public void NewPlaneReceived(string [] data)
         {
-            planeList.Add(new AirplaneArgs
-            {
-                Tag = data[0], XCoordinate = Int32.Parse(data[1]), YCoordinate = Int32.Parse(data[2]),
-                ZCoordinate = Int32.Parse(data[3]), TimeYear = Int32.Parse(data[4].Substring(0,3)), 
-                TimeMonth = Int32.Parse(data[4].Substring(4, 5)), TimeDay = Int32.Parse(data[4].Substring(6, 7)), 
-                TimeHour = Int32.Parse(data[4].Substring(8, 9)), TimeMinute = Int32.Parse(data[4].Substring(10, 11)), 
-                TimeSecond = Int32.Parse(data[4].Substring(12, 13)), TimeMillisecond = Int32.Parse(data[4].Substring(14, 16))
-            });
+            DateTime time = new DateTime(Int32.Parse(data[4].Substring(0,3)), Int32.Parse(data[4].Substring(4, 5)), 
+                Int32.Parse(data[4].Substring(6, 7)), Int32.Parse(data[4].Substring(8, 9)), Int32.Parse(data[4].Substring(10, 11)),
+                Int32.Parse(data[4].Substring(12, 13))).AddMilliseconds(Int32.Parse(data[4].Substring(14, 16)));
+
+            planeList.Add(new Plane(data[0], Int32.Parse(data[1]),Int32.Parse(data[2]),
+                Int32.Parse(data[3]), time)
+            );
         }
     }
 }

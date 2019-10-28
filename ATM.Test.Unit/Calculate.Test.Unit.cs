@@ -83,15 +83,35 @@ namespace ATM.Test.Unit
         [TestCase(20000, 20000, 20000, 19950, 270)]
         [TestCase(20000, 20000, 20050, 19950, 315)]
         [TestCase(14642, 63625, 26252, 43315, 299.75399467041603)]
-        public void TestCalculateBearing(double lat1, double lon1, double lat2, double lon2, double res)
+        public void TestCalculateBearing(int lat1, int lon1, int lat2, int lon2, double res)
         {
+            Plane oldPlane = new Plane
+            {
+                XCoordinate = lon1,
+                YCoordinate = lat1
+            };
+
+            Plane newPlane = new Plane
+            {
+                XCoordinate = lon2, YCoordinate = lat2
+            };
+
             // Setup test data
-            _uut.CalculateBearing(lat1, lon1, lat2, lon2);
+            _uut.CalculateBearing(oldPlane, newPlane);
             // Act: Trigger the fake object to execute event invocation
 
             // Assert something here or use an NSubstitute Received
-            Assert.That(_uut.CalculateBearing(lat1, lon1, lat2, lon2), Is.EqualTo(res));
+            Assert.That(_uut.CalculateBearing(oldPlane, newPlane), Is.EqualTo(res));
         }
+        //public void TestCalculateBearing(double lat1, double lon1, double lat2, double lon2, double res)
+        //{
+        //    // Setup test data
+        //    _uut.CalculateBearing(lat1, lon1, lat2, lon2);
+        //    // Act: Trigger the fake object to execute event invocation
+
+        //    // Assert something here or use an NSubstitute Received
+        //    Assert.That(_uut.CalculateBearing(lat1, lon1, lat2, lon2), Is.EqualTo(res));
+        //}
 
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20050, 20050, 2019, 10, 27, 15, 2, 0, 0, 0.58925565098878963)]
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 10100, 10100, 2019, 10, 27, 15, 2, 0, 0, 1.1785113019775793)]
@@ -105,14 +125,25 @@ namespace ATM.Test.Unit
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 90001, 90000, 2019, 10, 27, 15, 5, 0, 0, 0)]
         public void TestCalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2, double result)
         {
+            Plane oldPlane = new Plane
+            {
+                XCoordinate = x1,
+                YCoordinate = y1,
+                CurrentTime = new DateTime(year1, month1, day1, hour1, min1, sec1).AddMilliseconds(ms1)
+            };
+
+            Plane newPlane = new Plane
+            {
+                XCoordinate = x2,
+                YCoordinate = y2,
+                CurrentTime = new DateTime(year2, month2, day2, hour2, min2, sec2).AddMilliseconds(ms2)
+            };
             // Setup test data
-            _uut.CalculateVelocity(x1, y1, year1, month1, day1, hour1, min1, sec1, ms1, x2, y2, year2, month2, day2,
-                hour2, min2, sec2, ms2);
+            _uut.CalculateVelocity(oldPlane, newPlane);
             // Act: Trigger the fake object to execute event invocation
 
             // Assert something here or use an NSubstitute Received
-            Assert.That(_uut.CalculateVelocity(x1, y1, year1, month1, day1, hour1, min1, sec1, ms1, x2, y2, year2, month2, day2,
-                hour2, min2, sec2, ms2), Is.EqualTo(result));
+            Assert.That(_uut.CalculateVelocity(oldPlane, newPlane), Is.EqualTo(result));
         }
     }
 }

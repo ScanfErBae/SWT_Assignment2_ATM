@@ -7,19 +7,13 @@ using Microsoft.SqlServer.Server;
 
 namespace ATM
 {
-    class Plane : IPlane
+    public class Plane : IPlane
     {
         public string Tag { get; set; }
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
         public int ZCoordinate { get; set; }
-        public int TimeYear { get; set; }
-        public int TimeMonth { get; set; }
-        public int TimeDay { get; set; }
-        public int TimeHour { get; set; }
-        public int TimeMinute { get; set; }
-        public int TimeSecond { get; set; }
-        public int TimeMillisecond { get; set; }
+        public DateTime CurrentTime { get; set; }
 
         public double Bearing { get; set; }
 
@@ -28,38 +22,28 @@ namespace ATM
 
         private ICalculate _calculate;
 
-        public Plane(string tag, int X, int Y, int Z, int year, int month, int day, int hour,
-            int minute, int sec, int ms)
+        public Plane(string tag = "", int x = 0, int y = 0, int z = 0, DateTime t = new DateTime())
         {
-            //this._calculate = calculate;
-            this.XCoordinate = X;
-            this.YCoordinate = Y;
-            this.ZCoordinate = Z;
-            this.TimeYear = year;
-            this.TimeMonth = month;
-            this.TimeDay = day;
-            this.TimeHour = hour;
-            this.TimeMinute = minute;
-            this.TimeSecond = sec;
-            this.TimeMillisecond = ms;
+            this._calculate = new Calculate();
+            this.Tag = tag;
+            this.XCoordinate = x;
+            this.YCoordinate = y;
+            this.ZCoordinate = z;
+            this.CurrentTime = t;
         }
 
-        public void UpdateData(int X, int Y, int Z, int year, int month, int day, int hour, int minute, int sec, int ms )
+        public void UpdateData(int x, int y, int z, DateTime t)
         {
-            this.Bearing = _calculate.CalculateBearing(this.XCoordinate, this.YCoordinate, X, Y);
+            Plane newPlane = new Plane(this.Tag, x, y, z, t);
 
-            this.Velocity = _calculate.CalculateVelocity(this.XCoordinate, this.YCoordinate, this.TimeYear, this.TimeMonth, this.TimeDay, this.TimeHour, this.TimeMinute, this.TimeSecond, this.TimeMillisecond,X, Y, year, month, day, hour, minute, sec, ms);
+            this.Bearing = _calculate.CalculateBearing(this, newPlane);
+
+            this.Velocity = _calculate.CalculateVelocity(this, newPlane);
           
-            this.XCoordinate = X;
-            this.YCoordinate = Y;
-            this.ZCoordinate = Z;
-            this.TimeYear = year;
-            this.TimeMonth = month;
-            this.TimeDay = day;
-            this.TimeHour = hour;
-            this.TimeMinute = minute;
-            this.TimeSecond = sec;
-            this.TimeMillisecond = ms;
+            this.XCoordinate = x;
+            this.YCoordinate = y;
+            this.ZCoordinate = z;
+            this.CurrentTime = t;
             
         }
 
