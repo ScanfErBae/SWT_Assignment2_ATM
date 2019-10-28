@@ -8,7 +8,7 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    class DataSplitter : IDataSplitter
+    public class DataSplitter : IDataSplitter
     {
         private List<AirplaneArgs> planeList;
         private ITransponderReceiver _receiver;
