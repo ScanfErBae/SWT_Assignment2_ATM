@@ -29,6 +29,27 @@ namespace ATM
             path = (Directory.GetCurrentDirectory() + @"\Output.txt");
             System.IO.File.AppendAllText(path, contents);
         }
-        
+
+
+        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        {
+            // Just display data
+            foreach (var data in e.TransponderData)
+            {
+                //System.Console.WriteLine($"Transponderdata {data}");
+                string[] input = data.Split(';');
+                if (10000 <= Int32.Parse(input[1]) && Int32.Parse(input[1]) <= 90000 &&
+                    10000 <= Int32.Parse(input[2]) && Int32.Parse(input[2]) <= 90000 && 500 <= Int32.Parse(input[3]) &&
+                    Int32.Parse(input[3]) <= 20000)
+                {
+                    Print($"Transponderdata{data}\n");
+                }
+                else
+                {
+                    Print("Irrelevant fly\n");
+                }
+
+            }
+        }
     }
 }
