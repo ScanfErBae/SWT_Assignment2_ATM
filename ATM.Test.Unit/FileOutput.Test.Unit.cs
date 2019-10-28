@@ -26,21 +26,21 @@ namespace ATM.Test.Unit
             _uut = new FileOutput(receiver);
         }
 
-        //[Test]
-        //public void TestPrint()
-        //{
-        //    string path = "";
+        [Test]
+        public void TestPrint()
+        {
+            string path = "";
 
-        //    path = (Directory.GetCurrentDirectory()+ @"\Output.txt");
+            path = (Directory.GetCurrentDirectory() + @"\Output.txt");
 
-        //    // Setup test data
-        //    File.Delete(path);
-        //    string TestString = "This is a test string";
-        //    _uut.Print(TestString);
-        //    // Act: Trigger the fake object to execute event invocation
-        //    // Assert something here or use an NSubstitute Received
-        //    Assert.IsTrue(File.Exists(path));
+            // Setup test data
+            File.Delete(path);
+            string TestString = "This is a test string";
+            _uut.Print(TestString);
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.IsTrue(File.Exists(path));
 
-        //}
+        }
     }
 }
