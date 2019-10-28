@@ -75,15 +75,14 @@ namespace ATM.Test.Unit
         [TestCase(12500, 13000, 14500, 10500, 308.65980825409008)]
         [TestCase(10000, 10000, 10050, 10005, 5.7105931374996421)]
         [TestCase(10000, 10000, 10005, 10050, 84.289406862500371)]
-        [TestCase(10000,10000,10050,10050,45)]
-        [TestCase(10000,10000,10000,10050,90)]
+        [TestCase(10000, 10000, 10050, 10050, 45)]
+        [TestCase(10000, 10000, 10000, 10050, 90)]
         [TestCase(20000, 20000, 19950, 20050, 135)]
         [TestCase(20000, 20000, 19950, 20000, 180)]
         [TestCase(20000, 20000, 19950, 19950, 225)]
         [TestCase(20000, 20000, 20000, 19950, 270)]
         [TestCase(20000, 20000, 20050, 19950, 315)]
         [TestCase(14642, 63625, 26252, 43315, 299.75399467041603)]
-
         public void TestCalculateBearing(double lat1, double lon1, double lat2, double lon2, double res)
         {
             // Setup test data
@@ -103,8 +102,7 @@ namespace ATM.Test.Unit
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 30000, 30000, 2019, 10, 27, 15, 2, 0, 0, 117.85113019775791)]
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, -30000, -30000, 2019, 10, 27, 15, 2, 0, 0, 0)]
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 90000, 90000, 2019, 10, 27, 15, 5, 0, 0, 377.12361663282536)]
-
-        [TestCase(0, 0, 2019, 10, 27, 15, 20, 20, 50, 0, 0, 2019, 10, 27, 15, 22, 20, 50, 0)]
+        [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 90001, 90000, 2019, 10, 27, 15, 5, 0, 0, 0)]
         public void TestCalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2, double result)
         {
             // Setup test data

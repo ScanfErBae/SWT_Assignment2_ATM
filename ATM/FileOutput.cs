@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using TransponderReceiver;
 
@@ -23,8 +24,9 @@ namespace ATM
 
         public void Print(string contents)
         {
-            string path =
-                @"C:\SWT\AfleveringATM\SWT_Assignment2_ATM\TransponderReceiverUser\TrandsponderOutput\OutputFile\Output.txt";
+            string path = "";
+
+            path = (Directory.GetCurrentDirectory() + @"\Output.txt");
             System.IO.File.AppendAllText(path, contents);
         }
 

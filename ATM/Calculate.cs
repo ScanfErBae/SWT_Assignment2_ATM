@@ -10,7 +10,7 @@ namespace ATM
     {
       public double CalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2)
         {
-            if (x1 < 10000 ||x2 < 10000 || y1 < 10000 || y2 < 10000)
+            if (x1 < 10000 ||x2 < 10000 || y1 < 10000 || y2 < 10000 || x1 > 90000 || x2 > 90000 || y1 > 90000 || y2 > 90000)
             {
                 return 0;
             }
