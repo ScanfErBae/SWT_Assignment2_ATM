@@ -38,15 +38,15 @@ namespace ATM.Test.Unit
             };
         }
 
-        [Test]
-        public void TestReception()
-        {
-            // Setup test data
+        //[Test]
+        //public void TestReception()
+        //{
+        //    // Setup test data
 
-            // Act: Trigger the fake object to execute event invocation
+        //    // Act: Trigger the fake object to execute event invocation
 
-            // Assert something here or use an NSubstitute Received
-        }
+        //    // Assert something here or use an NSubstitute Received
+        //}
     }
 }
 
