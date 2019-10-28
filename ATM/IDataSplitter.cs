@@ -20,7 +20,7 @@ namespace ATM
         public int TimeSecond { get; set; }
         public int TimeMillisecond { get; set;}
     }
-    interface IDataSplitter
+    public interface IDataSplitter
     {
         event EventHandler<List<AirplaneArgs>> DataReceivedEvent;
     }
