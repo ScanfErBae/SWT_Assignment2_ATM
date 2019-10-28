@@ -10,6 +10,10 @@ namespace ATM
     {
       public double CalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2)
         {
+            if (x1 < 10000 ||x2 < 10000 || y1 < 10000 || y2 < 10000)
+            {
+                return 0;
+            }
             //Calculate time
             double yearCal = Math.Abs(year2 - year1) * 12 * 30 * 24 * 60 * 60;
             double montCal = Math.Abs(month2 - month1) * 30 * 24 * 60 * 60;
@@ -29,19 +33,26 @@ namespace ATM
             return distance / totalTimeInSec;
         }
 
-        public double CalculateBearing(int lat1, int lon1, int lat2, int lon2)
+        public double CalculateBearing(double lat1, double lon1, double lat2, double lon2)
         {
-            var dLon = ToRad(lon2 - lon1);
-            var dPhi = Math.Log(
-                Math.Tan(ToRad(lat2) / 2 + Math.PI / 4) / Math.Tan(ToRad(lat1) / 2 + Math.PI / 4));
-            if (Math.Abs(dLon) > Math.PI)
-                dLon = dLon > 0 ? -(2 * Math.PI - dLon) : (2 * Math.PI + dLon);
-            return ToBearing(Math.Atan2(dLon, dPhi));
+            double Rad2Deg = 180.0 / Math.PI;
+            double Deg2Rad = Math.PI / 180.0;
+            double dx = lat2 - lat1;
+            double dy = lon2 - lon1;
+            double Bearing = Math.Atan2(dy, dx) * Rad2Deg;
+            if (Bearing < 0)
+            {
+                Bearing = Bearing + 360; 
+
+
+            }
+            return Bearing;
         }
 
+        
         public double ToRad(double degrees)
         {
-            if (degrees < 0)
+            if (degrees < 0 || degrees > 360)
             {
                 return 0;
             }
@@ -50,17 +61,13 @@ namespace ATM
 
         public double ToDegrees(double radians)
         {
-            if (radians < 0)
+            radians = (radians * 180 / Math.PI) % 360;
+            if (radians < 0 || radians > 360)
             {
                 return 0;
             }
-            return radians * 180 / Math.PI;
+            return radians;
         }
 
-        public double ToBearing(double radians)
-        {
-            // convert radians to degrees (as bearing: 0...360)
-            return (ToDegrees(radians) + 360) % 360;
-        }
     }
 }
