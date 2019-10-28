@@ -21,6 +21,7 @@ namespace ATM
 
         private void DataSplit(object sender, RawTransponderDataEventArgs e)
         {
+            planeList.Clear();
             foreach (var data in e.TransponderData)
             {
                 string[] input = data.Split(';');
