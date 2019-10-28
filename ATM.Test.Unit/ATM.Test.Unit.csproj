@@ -68,6 +68,7 @@
     <Compile Include="FileOutput.Test.Unit.cs" />
     <Compile Include="Calculate.Test.Unit.cs" />
     <Compile Include="DataSplitter.Test.Unit.cs" />
+    <Compile Include="Filter.Test.Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

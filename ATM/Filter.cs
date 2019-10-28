@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Filter : IFilter
+    public class Filter : IFilter
     {
         private List<Plane> RelevantPlanes = new List<Plane>();
         private IDataSplitter _dataSplitter;
@@ -39,7 +39,10 @@ namespace ATM
                     }
             }
 
-            OnRelevantAirplanesReceivedEvent(new RelevantAirplaneArgs{_relevantPlanes = RelevantPlanes });
+            if (RelevantPlanes.Count > 0)
+            {
+                OnRelevantAirplanesReceivedEvent(new RelevantAirplaneArgs { _relevantPlanes = RelevantPlanes });
+            }
         }
         public void NewRelevantPlaneReceived(Plane NewRelevantPlane)
         {
