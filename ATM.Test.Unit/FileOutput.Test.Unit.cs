@@ -9,11 +9,6 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using TransponderReceiver;
 
-/* Der skal testes i alle 4 kvadranter af de 360 grader (spørg jesper)
- * Der skal testes med 0
- * Der skal testes med - tal
- */
-
 
 namespace ATM.Test.Unit
 {
@@ -31,21 +26,21 @@ namespace ATM.Test.Unit
             _uut = new FileOutput(receiver);
         }
 
-        [Test]
-        public void TestPrint()
-        {
-            string path = "";
+        //[Test]
+        //public void TestPrint()
+        //{
+        //    string path = "";
 
-            path = (Directory.GetCurrentDirectory()+ @"\Output.txt");
+        //    path = (Directory.GetCurrentDirectory()+ @"\Output.txt");
 
-            // Setup test data
-            File.Delete(path);
-            string TestString = "This is a test string";
-            _uut.Print(TestString);
-            // Act: Trigger the fake object to execute event invocation
-            // Assert something here or use an NSubstitute Received
-            Assert.IsTrue(File.Exists(path));
+        //    // Setup test data
+        //    File.Delete(path);
+        //    string TestString = "This is a test string";
+        //    _uut.Print(TestString);
+        //    // Act: Trigger the fake object to execute event invocation
+        //    // Assert something here or use an NSubstitute Received
+        //    Assert.IsTrue(File.Exists(path));
 
-        }
+        //}
     }
 }
