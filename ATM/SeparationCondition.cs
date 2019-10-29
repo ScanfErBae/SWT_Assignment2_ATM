@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace ATM
 {
     public class SeparationCondition : ISeparationCondition
@@ -16,30 +16,6 @@ namespace ATM
             this._consoleOutput = consoleOutput;
         }
         private List<Plane> _oldSepPlanes = new List<Plane>();
-        public void separation(List<Plane> planes)
-        {
-            int result = 0, i = 0, q = 0;
-            foreach (var Airplane in planes)
-            {
-                foreach (var Airplane2 in planes)
-                {
-                    if (q>i)
-                    {
-                        if (ComparePlanes(Airplane, Airplane2) == true)
-                        {
-
-                        }
-                        else
-                        {
-                            
-                        }
-                    }
-                    q++;
-                }
-                i++;
-                q = 0;
-            }
-        }
 
         public bool ComparePlanes(Plane Air1, Plane Air2)
         {
@@ -117,4 +93,3 @@ namespace ATM
     }
 
 }
-*/

@@ -39,7 +39,7 @@ namespace ATM.Test.Unit
                 Tag = tag,
                 CurrentTime = time
             };
-
+            testPlane.SeparationCond.Add("ABC1234");
             // Setup test data
             File.Delete(path);
             _uut.Print(testPlane);
