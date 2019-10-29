@@ -59,7 +59,7 @@ namespace ATM
         public void Separation(List<Plane> planes)
         {
             int result = 0, i = 0, q = 0;
-            //Console.Clear();
+            //Console.Clear();a
             foreach (var Airplane1 in planes)
             {
                 foreach (var Airplane2 in planes)
