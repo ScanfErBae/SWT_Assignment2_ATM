@@ -19,12 +19,12 @@ namespace ATM
                 }
                 Console.Write($"at {plane.CurrentTime}\n");
             }
-            Console.Write($"Flight {plane.Tag} ");
+            Console.Write($"Flight {plane.Tag} \t");
             Console.Write($"Position: ({plane.XCoordinate}, ");
-            Console.Write($"{plane.YCoordinate}), ");
-            Console.Write($"Altitude: {plane.ZCoordinate}, ");
+            Console.Write($"{plane.YCoordinate}) \t ");
+            Console.Write($"Altitude: {plane.ZCoordinate}   \t");
             string result = string.Format("{0:0.00}", plane.Velocity);
-            Console.Write($"Velocity: {result} m/s, ");
+            Console.Write($"Velocity: {result} m/s \t");
             result = string.Format("{0:0.00}", plane.Bearing);
             Console.Write($"Bearing: {result} degrees \n");
         }
