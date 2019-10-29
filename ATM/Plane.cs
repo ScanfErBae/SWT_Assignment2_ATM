@@ -31,6 +31,21 @@ namespace ATM
             this.YCoordinate = y;
             this.ZCoordinate = z;
             this.CurrentTime = t;
+            SeparationCond = new List<string>();
+        }
+
+        public Plane(Plane oldPlane)
+        {
+            Tag = oldPlane.Tag;
+            XCoordinate = oldPlane.XCoordinate;
+            YCoordinate = oldPlane.YCoordinate;
+            ZCoordinate = oldPlane.ZCoordinate;
+            CurrentTime = oldPlane.CurrentTime;
+            Bearing = oldPlane.Bearing;
+            Velocity = oldPlane.Velocity;
+            Relevant = oldPlane.Relevant;
+            SeparationCond = oldPlane.SeparationCond;
+            _calculate = oldPlane._calculate;
         }
 
         public void UpdateData(int x, int y, int z, DateTime t)

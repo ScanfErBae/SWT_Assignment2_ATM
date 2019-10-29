@@ -7,7 +7,7 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    public class FileOutput
+    public class FileOutput : IOutput
     {
         public void Print(Plane plane)
         {

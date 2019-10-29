@@ -21,7 +21,10 @@ namespace ATM
             var datasplitter = new DataSplitter(receiver);
             var filter = new Filter(datasplitter);
             var calculator = new Calculate();
-            var eventlist = new EventToList(filter, calculator);
+            var fileOutput = new FileOutput();
+            var consoleOutput = new ConsoleOutput();
+            var sepCond = new SeparationCondition(fileOutput, consoleOutput);
+            var eventList = new EventToList(filter, calculator, sepCond);
 
             // Let the real TDR execute in the background
             while (true)
