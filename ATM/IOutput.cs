@@ -6,6 +6,6 @@ namespace ATM
 {
     public interface IOutput
     {
-        void Print();
+        void Print(Plane plane);
     }
 }

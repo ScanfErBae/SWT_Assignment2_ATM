@@ -19,6 +19,7 @@ namespace ATM
 
         public double Velocity { get; set; }
         public bool Relevant { get; set; }
+        public List<string> SeparationCond { get; set; }
 
         private ICalculate _calculate;
 
