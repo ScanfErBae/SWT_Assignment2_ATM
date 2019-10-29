@@ -12,11 +12,10 @@ namespace ATM
         public void Print(Plane plane)
         {
             string content = "";
-            content = plane.CurrentTime.ToLongDateString() + " " + plane.CurrentTime.ToLongTimeString() + ":" + plane.CurrentTime.Millisecond + "Plane: " + plane.Tag + " Close to: " + plane.SeparationCond + "\n";
+            content = plane.CurrentTime.ToLongDateString() + " " + plane.CurrentTime.ToLongTimeString() + ":" + plane.CurrentTime.Millisecond + "Plane: " + plane.Tag + " Close to: " + plane.SeparationCond[1] + "\n";
             string path = "";
+            path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
             //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
-            path =
-                @"C:\Users\rasmu\OneDrive - Aarhus universitet\Skrivebord\4. Semester_m\SWT\ATM\SWT_Assignment2_ATM\ATM\Output.txt";
             //path = (Directory.GetCurrentDirectory() + @"\Output.txt");
             System.IO.File.AppendAllText(path, content);
         }
