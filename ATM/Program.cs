@@ -14,15 +14,18 @@ namespace ATM
     {
         static void Main(string[] args)
         {
-            // Using the real transponder data receiver
-            var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+            //// Using the real transponder data receiver
+            //var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-            // Dependency injection with the real TDR
-            var system = new ATM.FileOutput(receiver);
+            //// Dependency injection with the real TDR
+            //var system = new ATM.FileOutput(receiver);
 
-            // Let the real TDR execute in the background
-            while (true)
-                Thread.Sleep(1000);
+            //// Let the real TDR execute in the background
+            //while (true)
+            //    Thread.Sleep(1000);
         }
+
+        
+
     }
 }
