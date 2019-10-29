@@ -6,23 +6,27 @@ namespace ATM
 {
     public class ConsoleOutput : IOutput
     {
-        public void Print(Plane plane)
+        public void Print(Plane plane1)
         {
+            Plane plane = new Plane(plane1);
+
             if (plane.SeparationCond.Count > 0)
             {
-                Console.WriteLine($"SEPARATION CONDITION ACTIVE ON ");
+                Console.Write($"SEPARATION CONDITION ACTIVE ON ");
                 for (int i = 0; i < plane.SeparationCond.Count; i++)
                 {
                     Console.Write($" {plane.SeparationCond[i]}, ");
                 }
-                Console.Write($"at {plane.CurrentTime}");
+                Console.Write($"at {plane.CurrentTime}\n");
             }
-            Console.WriteLine($"Flight {plane.Tag}");
+            Console.Write($"Flight {plane.Tag} ");
             Console.Write($"Position: ({plane.XCoordinate}, ");
             Console.Write($"{plane.YCoordinate}), ");
             Console.Write($"Altitude: {plane.ZCoordinate}, ");
-            Console.Write($"Velocity: {plane.Velocity} m/s, ");
-            Console.Write($"Bearing: {plane.Bearing} degrees ");
+            string result = string.Format("{0:0.00}", plane.Velocity);
+            Console.Write($"Velocity: {result} m/s, ");
+            result = string.Format("{0:0.00}", plane.Bearing);
+            Console.Write($"Bearing: {result} degrees \n");
         }
     }
 }
