@@ -10,10 +10,6 @@ namespace ATM
     {
       public double CalculateVelocity(Plane oldPlane, Plane newPlane)
         {
-            if (oldPlane.XCoordinate < 10000 ||newPlane.XCoordinate < 10000 || oldPlane.YCoordinate < 10000 || newPlane.YCoordinate < 10000 || oldPlane.XCoordinate > 90000 || newPlane.XCoordinate > 90000 || oldPlane.YCoordinate > 90000 || newPlane.YCoordinate > 90000)
-            {
-                return 0;
-            }
             //Calculate time
             double yearCal = Math.Abs(newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60;
             double montCal = Math.Abs(newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60;
