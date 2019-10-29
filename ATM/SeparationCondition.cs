@@ -87,13 +87,19 @@ namespace ATM
                         }
                         else
                         {
+                            bool test2 = false;
                             foreach (var tag in Airplane1.SeparationCond)
                             {
                                 if (tag == Airplane2.Tag)
                                 {
-                                    Airplane1.SeparationCond.Remove(Airplane2.Tag);
-                                    Airplane2.SeparationCond.Remove(Airplane1.Tag);
+                                    test2 = true;
                                 }
+                            }
+
+                            if (test2)
+                            {
+                                Airplane1.SeparationCond.Remove(Airplane2.Tag);
+                                Airplane2.SeparationCond.Remove(Airplane1.Tag);
                             }
                         }
                     }
