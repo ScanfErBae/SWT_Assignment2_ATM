@@ -16,7 +16,9 @@ namespace ATM
              + "\n" + "Tag: " + plane.Tag + "\n";;
             string path = "";
             //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
-            path = (Directory.GetCurrentDirectory() + @"\Output.txt");
+            path =
+                @"C:\Users\rasmu\OneDrive - Aarhus universitet\Skrivebord\4. Semester_m\SWT\ATM\SWT_Assignment2_ATM\ATM\Output.txt";
+            //path = (Directory.GetCurrentDirectory() + @"\Output.txt");
             System.IO.File.AppendAllText(path, content);
         }
     }
