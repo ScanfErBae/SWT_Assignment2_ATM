@@ -103,15 +103,6 @@ namespace ATM.Test.Unit
             // Assert something here or use an NSubstitute Received
             Assert.That(_uut.CalculateBearing(oldPlane, newPlane), Is.EqualTo(res));
         }
-        //public void TestCalculateBearing(double lat1, double lon1, double lat2, double lon2, double res)
-        //{
-        //    // Setup test data
-        //    _uut.CalculateBearing(lat1, lon1, lat2, lon2);
-        //    // Act: Trigger the fake object to execute event invocation
-
-        //    // Assert something here or use an NSubstitute Received
-        //    Assert.That(_uut.CalculateBearing(lat1, lon1, lat2, lon2), Is.EqualTo(res));
-        //}
 
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20050, 20050, 2019, 10, 27, 15, 2, 0, 0, 0.58925565098878963)]
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 10100, 10100, 2019, 10, 27, 15, 2, 0, 0, 1.1785113019775793)]
