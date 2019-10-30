@@ -58,7 +58,7 @@ namespace ATM
                     && ZCoordinate == p.ZCoordinate);
         }
 
-        public void UpdateData(int x, int y, int z, DateTime t)
+        public Plane UpdateData(int x, int y, int z, DateTime t)
         {
             Plane newPlane = new Plane(this.Tag, x, y, z, t);
 
@@ -70,7 +70,8 @@ namespace ATM
             this.YCoordinate = y;
             this.ZCoordinate = z;
             this.CurrentTime = t;
-            
+
+            return this;
         }
 
 

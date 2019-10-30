@@ -8,7 +8,7 @@ namespace ATM
 {
     public class EventToList
     {
-        private List<Plane> _relevantPlanesList = new List<Plane>();
+        public List<Plane> _relevantPlanesList = new List<Plane>();
         private IFilter _filter;
         private ICalculate _calculator;
         private ISeparationCondition _separationCondition;
@@ -53,11 +53,13 @@ namespace ATM
 
         public void UpdatePlane(Plane oldPlane, Plane newPlane)
         {
-            oldPlane.Bearing = _calculator.CalculateBearing(oldPlane, newPlane);
-            oldPlane.Velocity = _calculator.CalculateVelocity(oldPlane, newPlane);
-            oldPlane.UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
-                newPlane.CurrentTime);
+            //oldPlane.Bearing = _calculator.CalculateBearing(oldPlane, newPlane);
+            //oldPlane.Velocity = _calculator.CalculateVelocity(oldPlane, newPlane);
+           //oldPlane = oldPlane.UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
+           //     newPlane.CurrentTime);
             oldPlane.Relevant = true;
+            _relevantPlanesList[_relevantPlanesList.IndexOf(oldPlane)].UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
+                newPlane.CurrentTime);
         }
 
         public void AddPlane(Plane newPlane)

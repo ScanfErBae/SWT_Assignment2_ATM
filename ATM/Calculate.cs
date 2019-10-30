@@ -11,29 +11,35 @@ namespace ATM
       public double CalculateVelocity(Plane oldPlane, Plane newPlane)
         {
             //Calculate time
-            double yearCal = Math.Abs(newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60;
-            double montCal = Math.Abs(newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60;
-            double dayCal = Math.Abs(newPlane.CurrentTime.Day- oldPlane.CurrentTime.Day) * 24 * 60 * 60;
-            double hourCal = Math.Abs(newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60;
-            double minCal = Math.Abs(newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60;
-            double secCal = Math.Abs(newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second);
-            double msCal = (Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond) * 0.001);
+            double yearCal = Math.Abs(newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60 * 1000;
+            double montCal = Math.Abs(newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60 * 1000;
+            double dayCal = Math.Abs(newPlane.CurrentTime.Day - oldPlane.CurrentTime.Day) * 24 * 60 * 60 * 1000;
+            double hourCal = Math.Abs(newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60 * 1000;
+            double minCal = Math.Abs(newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60 * 1000;
+            double secCal = Math.Abs(newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second) * 1000;
+            double msCal = Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond);
             double totalTimeInSec = yearCal + montCal + dayCal + hourCal + minCal + secCal + msCal;
+
+            System.Console.WriteLine($"Total: {totalTimeInSec}");
+            System.Console.WriteLine($"Sec: {secCal}");
+            System.Console.WriteLine($"MS: {msCal}");
+
+
 
 
             //Calculate distance
             double distance = Math.Sqrt(Math.Pow((newPlane.XCoordinate - oldPlane.XCoordinate), 2) + Math.Pow((newPlane.YCoordinate - oldPlane.YCoordinate), 2));
 
             //Calculate Velocity
-            return distance / totalTimeInSec;
+            return (distance / totalTimeInSec) * 1000;
         }
 
         public double CalculateBearing(Plane oldPlane, Plane newPlane)
         {
             double Rad2Deg = 180.0 / Math.PI;
             double Deg2Rad = Math.PI / 180.0;
-            double dx = newPlane.YCoordinate - oldPlane.YCoordinate;
-            double dy = newPlane.XCoordinate - oldPlane.XCoordinate;
+            double dx = newPlane.XCoordinate - oldPlane.XCoordinate;
+            double dy = newPlane.YCoordinate - oldPlane.YCoordinate;
             double Bearing = Math.Atan2(dy, dx) * Rad2Deg;
             if (Bearing < 0)
             {
