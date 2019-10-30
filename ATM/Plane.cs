@@ -48,22 +48,6 @@ namespace ATM
             _calculate = oldPlane._calculate;
         }
 
-        public static bool operator ==(Plane obj1, Plane obj2)
-        {
-            return (obj1.Tag == obj2.Tag
-                    && obj1.XCoordinate == obj2.XCoordinate
-                    && obj1.YCoordinate == obj2.YCoordinate
-                    && obj1.ZCoordinate == obj2.ZCoordinate);
-        }
-
-        public static bool operator !=(Plane obj1, Plane obj2)
-        {
-            return !(obj1.Tag == obj2.Tag
-                     && obj1.XCoordinate == obj2.XCoordinate
-                     && obj1.YCoordinate == obj2.YCoordinate
-                     && obj1.ZCoordinate == obj2.ZCoordinate);
-        }
-
         public override bool Equals(Object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
