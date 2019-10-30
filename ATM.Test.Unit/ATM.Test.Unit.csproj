@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsoleOutput.Test.Unit.cs" />
+    <Compile Include="SeperationCondition.Test.Unit.cs" />
+    <Compile Include="Plane.Test.Unit.cs" />
     <Compile Include="EventToList.Test.Unit.cs" />
     <Compile Include="FileOutput.Test.Unit.cs" />
     <Compile Include="Calculate.Test.Unit.cs" />
