@@ -41,9 +41,8 @@ namespace ATM
         {
             DateTime time = new DateTime(Int32.Parse(data[4].Substring(0,3)), Int32.Parse(data[4].Substring(4, 2)), 
                 Int32.Parse(data[4].Substring(6, 2)), Int32.Parse(data[4].Substring(8, 2)), Int32.Parse(data[4].Substring(10, 2)),
-                Int32.Parse(data[4].Substring(12, 2)));
+                Int32.Parse(data[4].Substring(12, 2)), Int32.Parse(data[4].Substring(14, 3)));
 
-            time.AddMilliseconds(Int32.Parse(data[4].Substring(14, 3)));
             planeList.Add(new Plane(data[0], Int32.Parse(data[1]),Int32.Parse(data[2]),
                 Int32.Parse(data[3]), time)
             );
