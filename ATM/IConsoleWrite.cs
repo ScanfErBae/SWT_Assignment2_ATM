@@ -10,7 +10,6 @@ namespace ATM
     {
         void ConsoleWritePlane(string PlaneTag, string PositionX, string PositionY, string Altitude, string Velocity, string Bearing);
 
-        void ConsoleWriteCondition(string);
+        void ConsoleWriteCondition(string Condition);
     }
-}
 }
