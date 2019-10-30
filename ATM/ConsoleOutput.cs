@@ -8,25 +8,31 @@ namespace ATM
     {
         public void Print(Plane plane1)
         {
+            ConsoleWrite output = new ConsoleWrite();
+            string planeCondInfo = "";
+
             Plane plane = new Plane(plane1);
 
             if (plane.SeparationCond.Count > 0)
             {
-                Console.Write($"SEPARATION CONDITION ACTIVE ON ");
+                planeCondInfo = ($"SEPARATION CONDITION ACTIVE ON ");
                 for (int i = 0; i < plane.SeparationCond.Count; i++)
                 {
-                    Console.Write($" {plane.SeparationCond[i]}, ");
+                    planeCondInfo += ($" {plane.SeparationCond[i]}, ");
                 }
-                Console.Write($"at {plane.CurrentTime}\n");
+                planeCondInfo += ($"at {plane.CurrentTime}\n");
+                output.ConsoleWriteCondition(planeCondInfo);
             }
-            Console.Write($"Flight {plane.Tag} \t");
-            Console.Write($"Position: ({plane.XCoordinate}, ");
-            Console.Write($"{plane.YCoordinate}) \t ");
-            Console.Write($"Altitude: {plane.ZCoordinate}   \t");
-            string result = string.Format("{0:0.00}", plane.Velocity);
-            Console.Write($"Velocity: {result} m/s \t");
-            result = string.Format("{0:0.00}", plane.Bearing);
-            Console.Write($"Bearing: {result} degrees \n");
+            string result1 = string.Format("{0:0.00}", plane.Velocity);
+            string result2 = string.Format("{0:0.00}", plane.Bearing);
+
+            string planeTag = ($"Flight {plane.Tag} \t");
+            string planePositionX = ($"Position: ({plane.XCoordinate}, ");
+            string planePositionY = ($"{plane.YCoordinate}) \t ");
+            string planeAltitude = ($"Altitude: {plane.ZCoordinate}   \t");
+            string planeVelocity = ($"Velocity: {result1} m/s \t");
+            string planeBearing = ($"Bearing: {result2} degrees \n");
+            output.ConsoleWritePlane(planeTag,planePositionX,planePositionY,planeAltitude,planeVelocity,planeBearing);
         }
     }
 }
