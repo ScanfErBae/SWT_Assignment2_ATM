@@ -11,7 +11,7 @@ namespace ATM
         public List<Plane> _relevantPlanes { get; set; }
     }
 
-    interface IFilter
+    public interface IFilter
     {
         event EventHandler<RelevantAirplaneArgs> RelevantAirplanesReceivedEvent;
     }

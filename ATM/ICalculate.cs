@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ICalculate
+    public interface ICalculate
     {
         double CalculateBearing(Plane oldPlane, Plane newPlane);
         double CalculateVelocity(Plane oldPlane, Plane newPlane);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ISeparationCondition
+    public interface ISeparationCondition
     {
         void Separation(List<Plane> planes);
     }
