@@ -11,10 +11,12 @@ namespace ATM
         private List<Plane> _relevantPlanesList = new List<Plane>();
         private IFilter _filter;
         private ICalculate _calculator;
-        public EventToList(IFilter filter, ICalculate calculator)
+        private ISeparationCondition _separationCondition;
+        public EventToList(IFilter filter, ICalculate calculator, ISeparationCondition sepCond)
         {
             this._calculator = calculator;
             this._filter = filter;
+            this._separationCondition = sepCond;
             this._filter.RelevantAirplanesReceivedEvent += ToList;
         }
 
@@ -24,7 +26,7 @@ namespace ATM
             {
                 plane.Relevant = false;
             }
-
+            Console.Clear();
             foreach (Plane newPlane in e._relevantPlanes)
             {
                 bool test = false;
@@ -34,19 +36,22 @@ namespace ATM
                     {
                         if (newPlane.Tag == oldPlane.Tag)
                         {
+                            oldPlane.Bearing = _calculator.CalculateBearing(oldPlane, newPlane);
+                            oldPlane.Velocity = _calculator.CalculateVelocity(oldPlane, newPlane);
                             oldPlane.UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
                                 newPlane.CurrentTime);
                             test = true;
                             oldPlane.Relevant = true;
+                            //Console.WriteLine($"Updated flight {oldPlane.Tag}");
                         }
                     }
-
-                    if (!test)
-                    {
-                        _relevantPlanesList.Add(new Plane(newPlane.Tag, newPlane.XCoordinate, newPlane.YCoordinate,
-                            newPlane.ZCoordinate, newPlane.CurrentTime));
-                        _relevantPlanesList.ElementAt(_relevantPlanesList.Count - 1).Relevant = true;
-                    }
+                }
+                if (!test)
+                {
+                    _relevantPlanesList.Add(new Plane(newPlane.Tag, newPlane.XCoordinate, newPlane.YCoordinate,
+                        newPlane.ZCoordinate, newPlane.CurrentTime));
+                    _relevantPlanesList.ElementAt(_relevantPlanesList.Count - 1).Relevant = true;
+                    //Console.WriteLine($"Added flight {newPlane.Tag}");
                 }
             }
 
@@ -62,10 +67,10 @@ namespace ATM
 
             foreach (Plane plane in planesToRemove)
             {
+                ////Console.WriteLine($"Removed flight {plane.Tag}");
                 _relevantPlanesList.Remove(plane);
             }
-
-
+            _separationCondition.Separation(_relevantPlanesList);
         }
     }
 }

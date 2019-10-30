@@ -103,26 +103,14 @@ namespace ATM.Test.Unit
             // Assert something here or use an NSubstitute Received
             Assert.That(_uut.CalculateBearing(oldPlane, newPlane), Is.EqualTo(res));
         }
-        //public void TestCalculateBearing(double lat1, double lon1, double lat2, double lon2, double res)
-        //{
-        //    // Setup test data
-        //    _uut.CalculateBearing(lat1, lon1, lat2, lon2);
-        //    // Act: Trigger the fake object to execute event invocation
-
-        //    // Assert something here or use an NSubstitute Received
-        //    Assert.That(_uut.CalculateBearing(lat1, lon1, lat2, lon2), Is.EqualTo(res));
-        //}
 
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20050, 20050, 2019, 10, 27, 15, 2, 0, 0, 0.58925565098878963)]
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 10100, 10100, 2019, 10, 27, 15, 2, 0, 0, 1.1785113019775793)]
-        [TestCase(9999, 9999, 2019, 10, 27, 15, 0, 0, 0, 10100, 10100, 2019, 10, 27, 15, 2, 0, 0, 0)]
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20500, 20500, 2019, 10, 27, 15, 2, 0, 0, 5.8925565098878963)]
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20500, 20500, 2019, 10, 27, 15, 1, 0, 0, 11.785113019775793)]
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 20000, 20500, 2019, 10, 27, 15, 2, 0, 0, 4.166666666666667)]
         [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, 30000, 30000, 2019, 10, 27, 15, 2, 0, 0, 117.85113019775791)]
-        [TestCase(20000, 20000, 2019, 10, 27, 15, 0, 0, 0, -30000, -30000, 2019, 10, 27, 15, 2, 0, 0, 0)]
         [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 90000, 90000, 2019, 10, 27, 15, 5, 0, 0, 377.12361663282536)]
-        [TestCase(10000, 10000, 2019, 10, 27, 15, 0, 0, 0, 90001, 90000, 2019, 10, 27, 15, 5, 0, 0, 0)]
         public void TestCalculateVelocity(int x1, int y1, int year1, int month1, int day1, int hour1, int min1, int sec1, int ms1, int x2, int y2, int year2, int month2, int day2, int hour2, int min2, int sec2, int ms2, double result)
         {
             Plane oldPlane = new Plane

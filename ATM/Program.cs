@@ -18,7 +18,13 @@ namespace ATM
             var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
             // Dependency injection with the real TDR
-            var system = new ATM.FileOutput(receiver);
+            var datasplitter = new DataSplitter(receiver);
+            var filter = new Filter(datasplitter);
+            var calculator = new Calculate();
+            var fileOutput = new FileOutput();
+            var consoleOutput = new ConsoleOutput();
+            var sepCond = new SeparationCondition(fileOutput, consoleOutput);
+            var eventList = new EventToList(filter, calculator, sepCond);
 
             // Let the real TDR execute in the background
             while (true)

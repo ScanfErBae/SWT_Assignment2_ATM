@@ -7,49 +7,17 @@ using TransponderReceiver;
 
 namespace ATM
 {
-    public class FileOutput
+    public class FileOutput : IOutput
     {
-
-        private ITransponderReceiver receiver;
-
-        public FileOutput(ITransponderReceiver receiver)
+        public void Print(Plane plane)
         {
-            // This will store the real or the fake transponder data receiver
-            this.receiver = receiver;
-
-            // Attach to the event of the real or the fake TDR
-            this.receiver.TransponderDataReady += ReceiverOnTransponderDataReady;
-        }
-
-
-        public void Print(string contents)
-        {
+            string content = "";
+            content = plane.CurrentTime.ToLongDateString() + " " + plane.CurrentTime.ToLongTimeString() + ":" + plane.CurrentTime.Millisecond + " Plane: " + plane.Tag + " Close to: " + plane.SeparationCond[0] + "\n";
             string path = "";
-
+            //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
+            //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
             path = (Directory.GetCurrentDirectory() + @"\Output.txt");
-            System.IO.File.AppendAllText(path, contents);
-        }
-
-
-        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
-        {
-            // Just display data
-            foreach (var data in e.TransponderData)
-            {
-                //System.Console.WriteLine($"Transponderdata {data}");
-                string[] input = data.Split(';');
-                if (10000 <= Int32.Parse(input[1]) && Int32.Parse(input[1]) <= 90000 &&
-                    10000 <= Int32.Parse(input[2]) && Int32.Parse(input[2]) <= 90000 && 500 <= Int32.Parse(input[3]) &&
-                    Int32.Parse(input[3]) <= 20000)
-                {
-                    Print($"Transponderdata{data}\n");
-                }
-                else
-                {
-                    Print("Irrelevant fly\n");
-                }
-
-            }
+            System.IO.File.AppendAllText(path, content);
         }
     }
 }

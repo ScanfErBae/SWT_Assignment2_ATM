@@ -42,6 +42,10 @@ namespace ATM
             if (RelevantPlanes.Count > 0)
             {
                 OnRelevantAirplanesReceivedEvent(new RelevantAirplaneArgs { _relevantPlanes = RelevantPlanes });
+                //foreach (Plane plane in RelevantPlanes)
+                //{
+                //    System.Console.WriteLine($"{plane}");
+                //}
             }
         }
         public void NewRelevantPlaneReceived(Plane NewRelevantPlane)

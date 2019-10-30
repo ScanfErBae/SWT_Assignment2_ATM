@@ -8,6 +8,6 @@ namespace ATM
 {
     interface ISeparationCondition
     {
-        void Separation(int value);
+        void Separation(List<Plane> planes);
     }
 }

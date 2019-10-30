@@ -39,10 +39,11 @@ namespace ATM
         // Time is separated into year, months, day, etc... 
         public void NewPlaneReceived(string [] data)
         {
-            DateTime time = new DateTime(Int32.Parse(data[4].Substring(0,3)), Int32.Parse(data[4].Substring(4, 5)), 
-                Int32.Parse(data[4].Substring(6, 7)), Int32.Parse(data[4].Substring(8, 9)), Int32.Parse(data[4].Substring(10, 11)),
-                Int32.Parse(data[4].Substring(12, 13))).AddMilliseconds(Int32.Parse(data[4].Substring(14, 16)));
+            DateTime time = new DateTime(Int32.Parse(data[4].Substring(0,3)), Int32.Parse(data[4].Substring(4, 2)), 
+                Int32.Parse(data[4].Substring(6, 2)), Int32.Parse(data[4].Substring(8, 2)), Int32.Parse(data[4].Substring(10, 2)),
+                Int32.Parse(data[4].Substring(12, 2)));
 
+            time.AddMilliseconds(Int32.Parse(data[4].Substring(14, 3)));
             planeList.Add(new Plane(data[0], Int32.Parse(data[1]),Int32.Parse(data[2]),
                 Int32.Parse(data[3]), time)
             );

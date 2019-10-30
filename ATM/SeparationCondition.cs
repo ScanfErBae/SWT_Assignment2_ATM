@@ -6,31 +6,16 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class SeparationCondition : ISeparationCondition
+    public class SeparationCondition : ISeparationCondition
     {
-        public void separation(List<Plane> planes)
+        private IOutput _fileOutput;
+        private IOutput _consoleOutput;
+        public SeparationCondition(IOutput fileoutput, IOutput consoleOutput)
         {
-            int result = 0, i = 0, q = 1;
-            foreach (var Airplane in planes)
-            {
-                foreach (var Airplane2 in planes)
-                {
-                    if (q>i)
-                    {
-                        if (ComparePlanes(Airplane, Airplane2) == true)
-                        {
-
-                        }
-                        else
-                        {
-                            
-                        }
-                    }
-                    q++;
-                }
-                i++;
-            }
+            this._fileOutput = fileoutput;
+            this._consoleOutput = consoleOutput;
         }
+        private List<Plane> _oldSepPlanes = new List<Plane>();
 
         public bool ComparePlanes(Plane Air1, Plane Air2)
         {
@@ -47,9 +32,63 @@ namespace ATM
             return false;
         }
 
-        public void Separation(int value)
+        public void Separation(List<Plane> planes)
         {
-            throw new NotImplementedException();
+            int result = 0, i = 0, q = 0; 
+            //Console.Clear();a11
+            foreach (var Airplane1 in planes)
+            {
+                foreach (var Airplane2 in planes)
+                {
+                    if (q > i)
+                    {
+                        if (ComparePlanes(Airplane1, Airplane2) == true)
+                        {
+                            bool test = false;
+                            foreach (var tag in Airplane1.SeparationCond)
+                            {
+                                if (tag == Airplane2.Tag)
+                                {
+                                    test = true; 
+                                }
+                            }
+
+                            if (!test)
+                            {
+                                Airplane1.SeparationCond.Add(Airplane2.Tag);
+                                Airplane2.SeparationCond.Add(Airplane1.Tag);
+                                _fileOutput.Print(Airplane1);
+                                _fileOutput.Print(Airplane2);
+                            }
+                        }
+                        else
+                        {
+                            bool test2 = false;
+                            foreach (var tag in Airplane1.SeparationCond)
+                            {
+                                if (tag == Airplane2.Tag)
+                                {
+                                    test2 = true;
+                                }
+                            }
+
+                            if (test2)
+                            {
+                                Airplane1.SeparationCond.Remove(Airplane2.Tag);
+                                Airplane2.SeparationCond.Remove(Airplane1.Tag);
+                            }
+                        }
+                    }
+                    q++;
+                }
+                i++;
+                q = 0;
+            }
+
+            foreach (Plane plane in planes)
+            {
+                _consoleOutput.Print(plane);
+            }
         }
     }
 
