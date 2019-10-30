@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class ConsoleWrite: IConsoleWrite
+    public class ConsoleWrite: IConsoleWrite
     {
       public void ConsoleWritePlane(string PlaneTag, string PositionX, string PositionY, string Altitude, string Velocity,
             string Bearing)
