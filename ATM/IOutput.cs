@@ -7,5 +7,7 @@ namespace ATM
     public interface IOutput
     {
         void Print(Plane plane);
+        
+        
     }
 }

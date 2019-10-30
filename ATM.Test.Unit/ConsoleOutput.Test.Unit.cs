@@ -18,12 +18,27 @@ namespace ATM.Test.Unit
     {
         private ConsoleOutput _uut;
 
+        private Plane _plane1;
+        private Plane _plane2;
+        private IOutput _fakeOutput;
+        
+        
         [SetUp]
         public void Setup()
         {
-            // Dependency injection with the real TDR
+            _plane1 = new Plane();
+            _plane2 = new Plane();
+
+
+            //Fakes
+
             _uut = new ConsoleOutput();
+
+
         }
+
+
+
 
 
         [Test]
@@ -32,7 +47,7 @@ namespace ATM.Test.Unit
             DateTime time2 = new DateTime(2019, 10, 30, 16, 55, 40, 200);
             Plane testPlane = new Plane("ABC1234", 30000, 30000, 3000, time2);
 
-            
+           
 
         }
 

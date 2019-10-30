@@ -11,13 +11,13 @@ namespace ATM
       public double CalculateVelocity(Plane oldPlane, Plane newPlane)
         {
             //Calculate time
-            double yearCal = Math.Abs(newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60 * 1000;
-            double montCal = Math.Abs(newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60 * 1000;
-            double dayCal = Math.Abs(newPlane.CurrentTime.Day - oldPlane.CurrentTime.Day) * 24 * 60 * 60 * 1000;
-            double hourCal = Math.Abs(newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60 * 1000;
-            double minCal = Math.Abs(newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60 * 1000;
-            double secCal = Math.Abs(newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second) * 1000;
-            double msCal = Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond);
+            double yearCal = (newPlane.CurrentTime.Year - oldPlane.CurrentTime.Year) * 12 * 30 * 24 * 60 * 60 * 1000;
+            double montCal = (newPlane.CurrentTime.Month - oldPlane.CurrentTime.Month) * 30 * 24 * 60 * 60 * 1000;
+            double dayCal = (newPlane.CurrentTime.Day - oldPlane.CurrentTime.Day) * 24 * 60 * 60 * 1000;
+            double hourCal = (newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60 * 1000;
+            double minCal = (newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60 * 1000;
+            double secCal = (newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second) * 1000;
+            double msCal = (newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond);
             double totalTimeInSec = yearCal + montCal + dayCal + hourCal + minCal + secCal + msCal;
 
             System.Console.WriteLine($"Total: {totalTimeInSec}");

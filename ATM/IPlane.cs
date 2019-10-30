@@ -11,5 +11,6 @@ namespace ATM
     {
         Plane UpdateData(int x, int y, int z, DateTime t);
 
+        public Plane(Plane oldPlane);
     }
 }

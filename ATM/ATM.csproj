@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Calculate.cs" />
     <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="ConsoleWrite.cs" />
+    <Compile Include="IConsoleWrite.cs" />
     <Compile Include="FileOutput.cs" />
     <Compile Include="EventToList.cs" />
     <Compile Include="Filter.cs" />
