@@ -105,7 +105,7 @@ namespace ATM.Test.Unit
             testPlane.CurrentTime = time;
             _uut.Print(testPlane);
 
-            Assert.That(_uut.planeCondInfo, Is.EqualTo("SEPARATION CONDITION ACTIVE ON  " + testPlane.SeparationCond[0] + ", at "+testPlane.CurrentTime+"\n"));
+            Assert.That(_uut.planeCondInfo, Is.EqualTo("SEPARATION CONDITION ACTIVE ON: Flight " + testPlane.Tag +" in connection with " + testPlane.SeparationCond[0] + ", at "+testPlane.CurrentTime+"\n"));
         }
 
 

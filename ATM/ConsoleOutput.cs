@@ -36,7 +36,7 @@ namespace ATM
             Plane plane = new Plane(plane1);
             if (plane.SeparationCond.Count > 0)
             {
-                planeCondInfo = ($"SEPARATION CONDITION ACTIVE ON ");
+                planeCondInfo = ($"SEPARATION CONDITION ACTIVE ON: Flight {plane.Tag} in connection with");
                 for (int i = 0; i < plane.SeparationCond.Count; i++)
                 {
                     planeCondInfo += ($" {plane.SeparationCond[i]}, ");
