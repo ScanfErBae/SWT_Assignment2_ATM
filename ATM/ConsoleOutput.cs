@@ -6,8 +6,29 @@ namespace ATM
 {
     public class ConsoleOutput : IOutput
     {
+        public string planeTag { get; set; }
+        public string planePositionX { get; set; }
+        public string planePositionY { get; set; }
+        public string planeAltitude { get; set; }
+        public string planeVelocity { get; set; }
+        public string planeBearing { get; set; }
+        public string planeCondInfo { get; set; }
+
+
+        public ConsoleOutput(string tag = "", string x = "", string y = "", string a = "", string b = "", string cond = "")
+        {
+            this.planeTag = tag;
+            this.planePositionX = x;
+            this.planePositionY = y;
+            this.planeAltitude = a;
+            this.planeBearing = b;
+            this.planeCondInfo = cond;
+        }
+
         public void Print(Plane plane1)
         {
+
+
             ConsoleWrite output = new ConsoleWrite();
             string planeCondInfo = "";
 
@@ -26,12 +47,12 @@ namespace ATM
             string result1 = string.Format("{0:0.00}", plane.Velocity);
             string result2 = string.Format("{0:0.00}", plane.Bearing);
 
-            string planeTag = ($"Flight {plane.Tag} \t");
-            string planePositionX = ($"Position: ({plane.XCoordinate}, ");
-            string planePositionY = ($"{plane.YCoordinate}) \t ");
-            string planeAltitude = ($"Altitude: {plane.ZCoordinate}   \t");
-            string planeVelocity = ($"Velocity: {result1} m/s \t");
-            string planeBearing = ($"Bearing: {result2} degrees \n");
+            planeTag = ($"Flight {plane.Tag} \t");
+            planePositionX = ($"Position: ({plane.XCoordinate}, ");
+            planePositionY = ($"{plane.YCoordinate}) \t ");
+            planeAltitude = ($"Altitude: {plane.ZCoordinate}   \t");
+            planeVelocity = ($"Velocity: {result1} m/s \t");
+            planeBearing = ($"Bearing: {result2} degrees \n");
             output.ConsoleWritePlane(planeTag,planePositionX,planePositionY,planeAltitude,planeVelocity,planeBearing);
         }
     }
