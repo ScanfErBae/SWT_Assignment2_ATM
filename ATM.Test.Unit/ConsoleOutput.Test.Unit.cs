@@ -32,7 +32,7 @@ namespace ATM.Test.Unit
             DateTime time2 = new DateTime(2019, 10, 30, 16, 55, 40, 200);
             Plane testPlane = new Plane("ABC1234", 30000, 30000, 3000, time2);
 
-            _uut.planeTag = testPlane.Tag;
+            _uut.Print(testPlane);
 
             Assert.That(_uut.planeTag = testPlane.Tag, Is.EqualTo(testPlane.Tag));
 

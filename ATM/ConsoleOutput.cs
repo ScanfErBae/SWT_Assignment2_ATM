@@ -15,14 +15,15 @@ namespace ATM
         public string planeCondInfo { get; set; }
 
 
-        public ConsoleOutput(string tag = "", string x = "", string y = "", string a = "", string b = "", string cond = "")
+        public ConsoleOutput(string tag = "", string x = "", string y = "", string a = "", string v = "", string b = "", string cond = "")
         {
-            this.planeTag = tag;
-            this.planePositionX = x;
-            this.planePositionY = y;
-            this.planeAltitude = a;
-            this.planeBearing = b;
-            this.planeCondInfo = cond;
+            planeTag = tag;
+            planePositionX = x;
+            planePositionY = y;
+            planeAltitude = a;
+            planeVelocity = v;
+            planeBearing = b;
+            planeCondInfo = cond;
         }
 
         public void Print(Plane plane1)
