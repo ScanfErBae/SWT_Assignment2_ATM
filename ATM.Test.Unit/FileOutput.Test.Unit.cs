@@ -10,7 +10,6 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using TransponderReceiver;
 
-
 namespace ATM.Test.Unit
 {
     [TestFixture]

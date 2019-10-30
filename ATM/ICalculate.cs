@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface ICalculate
     {
-        double CalculateBearing(Plane oldPlane, Plane newPlane);
         double CalculateVelocity(Plane oldPlane, Plane newPlane);
+        double CalculateBearing(Plane oldPlane, Plane newPlane);
     }
 }
