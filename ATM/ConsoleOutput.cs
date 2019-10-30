@@ -31,10 +31,9 @@ namespace ATM
 
 
             ConsoleWrite output = new ConsoleWrite();
-            string planeCondInfo = "";
+            planeCondInfo = "";
 
             Plane plane = new Plane(plane1);
-
             if (plane.SeparationCond.Count > 0)
             {
                 planeCondInfo = ($"SEPARATION CONDITION ACTIVE ON ");
