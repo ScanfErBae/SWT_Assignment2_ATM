@@ -53,10 +53,6 @@ namespace ATM
 
         public void UpdatePlane(Plane oldPlane, Plane newPlane)
         {
-            //oldPlane.Bearing = _calculator.CalculateBearing(oldPlane, newPlane);
-            //oldPlane.Velocity = _calculator.CalculateVelocity(oldPlane, newPlane);
-           //oldPlane = oldPlane.UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
-           //     newPlane.CurrentTime);
             oldPlane.Relevant = true;
             _relevantPlanesList[_relevantPlanesList.IndexOf(oldPlane)].UpdateData(newPlane.XCoordinate, newPlane.YCoordinate, newPlane.ZCoordinate,
                 newPlane.CurrentTime);
