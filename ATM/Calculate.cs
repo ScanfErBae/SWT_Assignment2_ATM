@@ -20,13 +20,6 @@ namespace ATM
             double msCal = (newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond);
             double totalTimeInSec = yearCal + montCal + dayCal + hourCal + minCal + secCal + msCal;
 
-            System.Console.WriteLine($"Total: {totalTimeInSec}");
-            System.Console.WriteLine($"Sec: {secCal}");
-            System.Console.WriteLine($"MS: {msCal}");
-
-
-
-
             //Calculate distance
             double distance = Math.Sqrt(Math.Pow((newPlane.XCoordinate - oldPlane.XCoordinate), 2) + Math.Pow((newPlane.YCoordinate - oldPlane.YCoordinate), 2));
 
