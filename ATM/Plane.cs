@@ -48,6 +48,32 @@ namespace ATM
             _calculate = oldPlane._calculate;
         }
 
+        public static bool operator ==(Plane obj1, Plane obj2)
+        {
+            return (obj1.Tag == obj2.Tag
+                    && obj1.XCoordinate == obj2.XCoordinate
+                    && obj1.YCoordinate == obj2.YCoordinate
+                    && obj1.ZCoordinate == obj2.ZCoordinate);
+        }
+
+        public static bool operator !=(Plane obj1, Plane obj2)
+        {
+            return !(obj1.Tag == obj2.Tag
+                     && obj1.XCoordinate == obj2.XCoordinate
+                     && obj1.YCoordinate == obj2.YCoordinate
+                     && obj1.ZCoordinate == obj2.ZCoordinate);
+        }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+            Plane p = (Plane)obj;
+            return (Tag == p.Tag
+                    && XCoordinate == p.XCoordinate
+                    && YCoordinate == p.YCoordinate
+                    && ZCoordinate == p.ZCoordinate);
+        }
+
         public void UpdateData(int x, int y, int z, DateTime t)
         {
             Plane newPlane = new Plane(this.Tag, x, y, z, t);
