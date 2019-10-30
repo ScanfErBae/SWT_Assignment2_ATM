@@ -26,7 +26,7 @@ namespace ATM
             {
                 plane.Relevant = false;
             }
-            Console.Clear();
+            //Console.Clear();
             foreach (Plane newPlane in e._relevantPlanes)
             {
                 bool test = false;

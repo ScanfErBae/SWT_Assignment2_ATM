@@ -111,5 +111,67 @@ namespace ATM.Test.Unit
             // Assert something here or use an NSubstitute Received
             Assert.That(_uut._relevantPlanesList.IndexOf(testPlane1), Is.EqualTo(0));
         }
+
+        [Test]
+        public void EventToList_OnePlaneGetsRegistered_TriggersEventAndPlaneGetsAddedToList()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time1);
+
+            List<Plane> planeList = new List<Plane>();
+            planeList.Add(testPlane1);
+
+            _fakeFilter.RelevantAirplanesReceivedEvent
+                += Raise.EventWith(this, new RelevantAirplaneArgs { _relevantPlanes = planeList });
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut._relevantPlanesList[0], Is.EqualTo(testPlane1));
+        }
+
+        [Test]
+        public void EventToList_OnePlaneGetsRegistered_PlanesGetsRegisteredAgainAndGetsUpdatedInList()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time1);
+
+            List<Plane> planeList = new List<Plane>();
+            planeList.Add(testPlane1);
+
+            _fakeFilter.RelevantAirplanesReceivedEvent
+                += Raise.EventWith(this, new RelevantAirplaneArgs { _relevantPlanes = planeList });
+
+            planeList.Clear();
+            testPlane1.XCoordinate = 20300;
+            planeList.Add(testPlane1);
+
+            _fakeFilter.RelevantAirplanesReceivedEvent
+                += Raise.EventWith(this, new RelevantAirplaneArgs { _relevantPlanes = planeList });
+
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut._relevantPlanesList[0], Is.EqualTo(testPlane1));
+        }
+
+        [Test]
+        public void EventToList_TwoPlaneGetsRegisteredAndAfterwordsOnlyOnePlane_SecondPlaneIsNotInList()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time1);
+            Plane testPlane2 = new Plane("DEF5678", 25000, 25000, 2900, time1);
+
+            List<Plane> planeList = new List<Plane>();
+            planeList.Add(testPlane1);
+            planeList.Add(testPlane2);
+            _fakeFilter.RelevantAirplanesReceivedEvent
+                += Raise.EventWith(this, new RelevantAirplaneArgs { _relevantPlanes = planeList });
+
+            planeList.Remove(testPlane2);
+            _fakeFilter.RelevantAirplanesReceivedEvent
+                += Raise.EventWith(this, new RelevantAirplaneArgs { _relevantPlanes = planeList });
+
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut._relevantPlanesList.IndexOf(testPlane2), Is.EqualTo(-1));
+        }
     }
 }
