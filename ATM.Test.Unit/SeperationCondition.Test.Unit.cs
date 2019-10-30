@@ -59,16 +59,22 @@ namespace ATM.Test.Unit
             Assert.That(_uut.ComparePlanes(testPlane1, testPlane2), Is.EqualTo(true));
         }
 
-        //[Test]
-        //public void TestSeperationCond()
-        //{
-        //    // Setup test data
+        public void TestSeperationCond()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time);
+            Plane testPlane2 = new Plane("ABC1234", 20200, 20000, 2500, time);
 
+            List<Plane> Planelist = new List<Plane>();
+            Planelist.Add(testPlane1);
+            Planelist.Add(testPlane2);
 
-        //    // Act: Trigger the fake object to execute event invocation
-        //    // Assert something here or use an NSubstitute Received
-        //    Assert.That(), Is.EqualTo(true));
-        //}
+            // Act: Trigger the fake object to execute event invocation
+            _uut.Separation(Planelist);
+
+            // Assert something here or use an NSubstitute Received
+            Assert.That((testPlane1.SeparationCond[0]), Is.EqualTo(testPlane2.Tag));
+        }
 
     }
 }
