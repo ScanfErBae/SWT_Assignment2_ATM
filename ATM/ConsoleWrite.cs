@@ -11,7 +11,7 @@ namespace ATM
       public void ConsoleWritePlane(string PlaneTag, string PositionX, string PositionY, string Altitude, string Velocity,
             string Bearing)
         {
-            Console.Write(PlaneTag, PositionX, PositionY, Altitude, Velocity, Bearing);
+            Console.Write(PlaneTag + PositionX + PositionY + Altitude + Velocity + Bearing);
         }
 
         public void ConsoleWriteCondition(string Conditions)
