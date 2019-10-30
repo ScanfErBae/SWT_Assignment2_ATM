@@ -9,6 +9,7 @@ using NSubstitute;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using TransponderReceiver;
+using ATM;
 
 
 namespace ATM.Test.Unit
@@ -17,33 +18,41 @@ namespace ATM.Test.Unit
     class PlaneTest
     {
         private Plane _uut;
-        
-        DateTime time = new DateTime(2019, 10, 29, 15, 55, 40, 200);
 
+
+        DateTime time = new DateTime(2019, 10, 29, 15, 55, 40, 200);
 
         [SetUp]
         public void Setup()
         {
             // Dependency injection with the real TDR
             _uut = new Plane();
-
         }
 
-        //[TestCase("ABC1234", 20000, 20000, 2500)]
-        //public void TestPlaneConstructor(string tag, int x, int y, int z)
-        //{
-        //    // Setup test data
-        //    Plane assertPlane = new Plane("ABC1234", 20000, 20000, 2500, time);
-        //    _uut.Tag = tag;
-        //    _uut.XCoordinate = x;
-        //    _uut.YCoordinate = y;
-        //    _uut.ZCoordinate = z;
-        //    _uut.CurrentTime = time;
-        //    // Act: Trigger the fake object to execute event invocation
-        //    // Assert something here or use an NSubstitute Received
-        //    Assert.That(_uut), Is.EqualTo(assertPlane);
+        [TestCase("ABC1234", 20000, 20000, 2500)]
+        public void TestPlaneConstructor(string tag, int x, int y, int z)
+        {
+            // Setup test data
+            Plane assertPlane = new Plane("ABC1234", 20000, 20000, 2500, time);
+            _uut.Tag = tag;
+            _uut.XCoordinate = x;
+            _uut.YCoordinate = y;
+            _uut.ZCoordinate = z;
+            _uut.CurrentTime = time;
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut, Is.EqualTo(assertPlane));
+        }
 
-
-        //}
+        [Test]
+        public void TestPlaneCopyConstructor()
+        {
+            // Setup test data
+            Plane assertPlane = new Plane("ABC1234", 20000, 20000, 2500, time);
+            _uut = new Plane(assertPlane);
+            // Act: Trigger the fake object to execute event invocation
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut, Is.EqualTo(assertPlane));
+        }
     }
 }
