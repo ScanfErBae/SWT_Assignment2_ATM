@@ -33,8 +33,8 @@ namespace ATM
         {
             double Rad2Deg = 180.0 / Math.PI;
             double Deg2Rad = Math.PI / 180.0;
-            double dx = newPlane.YCoordinate - oldPlane.YCoordinate;
-            double dy = newPlane.XCoordinate - oldPlane.XCoordinate;
+            double dx = newPlane.XCoordinate - oldPlane.XCoordinate;
+            double dy = newPlane.YCoordinate - oldPlane.YCoordinate;
             double Bearing = Math.Atan2(dy, dx) * Rad2Deg;
             if (Bearing < 0)
             {

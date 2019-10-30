@@ -9,7 +9,7 @@ namespace ATM
 {
     interface IPlane
     {
-        void UpdateData(int x, int y, int z, DateTime t);
+        Plane UpdateData(int x, int y, int z, DateTime t);
 
     }
 }
