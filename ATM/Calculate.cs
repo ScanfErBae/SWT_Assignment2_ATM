@@ -17,8 +17,7 @@ namespace ATM
             double hourCal = Math.Abs(newPlane.CurrentTime.Hour - oldPlane.CurrentTime.Hour) * 60 * 60;
             double minCal = Math.Abs(newPlane.CurrentTime.Minute - oldPlane.CurrentTime.Minute) * 60;
             double secCal = Math.Abs(newPlane.CurrentTime.Second - oldPlane.CurrentTime.Second);
-            double msCal = (Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond));
-            msCal = msCal / 1000;
+            double msCal = (Math.Abs(newPlane.CurrentTime.Millisecond - oldPlane.CurrentTime.Millisecond) * 0.001);
             double totalTimeInSec = yearCal + montCal + dayCal + hourCal + minCal + secCal + msCal;
 
 

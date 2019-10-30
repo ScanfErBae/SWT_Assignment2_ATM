@@ -25,6 +25,17 @@ namespace ATM.Test.Unit
             _uut = new ConsoleOutput();
         }
 
+
+        [Test]
+        public void print(Plane plane)
+        {
+            DateTime time2 = new DateTime(2019, 10, 30, 16, 55, 40, 200);
+            Plane testPlane = new Plane("ABC1234", 30000, 30000, 3000, time2);
+
+            
+
+        }
+
         //[TestCase("Tag", 20000, 20000, 2500)]
         //public void TestPrint(string tag, int x, int y, int z)
         //{
