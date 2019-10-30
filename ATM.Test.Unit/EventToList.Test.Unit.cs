@@ -74,5 +74,42 @@ namespace ATM.Test.Unit
             // Assert something here or use an NSubstitute Received
             Assert.That(_uut._relevantPlanesList[0], Is.EqualTo(testPlane2));
         }
+
+
+        [Test]
+        public void TestRemovePlaneTestOfPlaneOutOfIndex()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time1);
+            Plane testPlane2 = new Plane("ABC1234", 20200, 20200, 2500, time1);
+
+            // Act: Trigger the fake object to execute event invocation
+            _uut.AddPlane(testPlane1);
+            _uut.AddPlane(testPlane2);
+
+            _uut._relevantPlanesList[1].Relevant = false;
+
+            _uut.RemoveOldPlanes(_uut._relevantPlanesList);
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut._relevantPlanesList.IndexOf(testPlane2), Is.EqualTo(-1));
+        }
+
+        [Test]
+        public void TestRemovePlanePlaneStillInIndex()
+        {
+            // Setup test data
+            Plane testPlane1 = new Plane("ABC1234", 20000, 20000, 2500, time1);
+            Plane testPlane2 = new Plane("ABC1234", 20200, 20200, 2500, time1);
+
+            // Act: Trigger the fake object to execute event invocation
+            _uut.AddPlane(testPlane1);
+            _uut.AddPlane(testPlane2);
+
+            _uut._relevantPlanesList[1].Relevant = false;
+
+            _uut.RemoveOldPlanes(_uut._relevantPlanesList);
+            // Assert something here or use an NSubstitute Received
+            Assert.That(_uut._relevantPlanesList.IndexOf(testPlane1), Is.EqualTo(0));
+        }
     }
 }
