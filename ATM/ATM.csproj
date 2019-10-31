@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Calculate.cs" />
     <Compile Include="ConsoleOutput.cs" />
+    <Compile Include="InvalidPlaneException.cs" />
     <Compile Include="ConsoleWrite.cs" />
     <Compile Include="IConsoleWrite.cs" />
     <Compile Include="FileOutput.cs" />

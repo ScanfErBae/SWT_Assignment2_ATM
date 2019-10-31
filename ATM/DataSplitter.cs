@@ -19,14 +19,19 @@ namespace ATM
         }
         public event EventHandler<AirplaneArgs> DataReceivedEvent;
 
-        private void DataSplit(object sender, RawTransponderDataEventArgs e)
+        public void DataSplit(object sender, RawTransponderDataEventArgs e)
         {
             planeList.Clear();
             foreach (var data in e.TransponderData)
             {
                 string[] input = data.Split(';');
+                if (input.Length != 5)
+                {
+                    throw new InvalidPlaneException("Data string was not split - Not correct format - Expected (Tag;X;Y;Altitude;Time)");
+                }
                 NewPlaneReceived(input);
             }
+
             OnDataReceivedEvent(new AirplaneArgs {_planes = planeList});
         }
 

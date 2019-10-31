@@ -72,9 +72,37 @@ namespace ATM.Test.Unit
             Assert.That(receivedArgs._planes[0], Is.EqualTo(planeToCompareTo));
         }
 
+        [Test]
+        public void Data_From_Plane_Excepton_Test_Time_Missing()
+        {
+            // Setup test data
+            List<string> testPlane = new List<string>();
+            testPlane.Add("ATR423;39045;12932;14000");
+            //Act: Trigger the fake object to execute event invocation
+            //Assert
+            Assert.That(() => _uut.DataSplit(this, new RawTransponderDataEventArgs(testPlane)),Throws.TypeOf<InvalidPlaneException>());
+        }
 
+        [Test]
+        public void Data_From_Plane_Excepton_Test_Tag_Missing()
+        {
+            // Setup test data
+            List<string> testPlane = new List<string>();
+            testPlane.Add("39045;12932;14000;20151006213456789");
+            //Act: Trigger the fake object to execute event invocation
+            //Assert
+            Assert.That(() => _uut.DataSplit(this, new RawTransponderDataEventArgs(testPlane)), Throws.TypeOf<InvalidPlaneException>());
+        }
+
+        [Test]
+        public void Data_From_Plane_Excepton_Test_Seperator_Missing()
+        {
+            // Setup test data
+            List<string> testPlane = new List<string>();
+            testPlane.Add("ATR42339045;12932;14000;20151006213456789");
+            //Act: Trigger the fake object to execute event invocation
+            //Assert
+            Assert.That(() => _uut.DataSplit(this, new RawTransponderDataEventArgs(testPlane)), Throws.TypeOf<InvalidPlaneException>());
+        }
     }
 }
-
-
-
