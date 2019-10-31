@@ -13,7 +13,6 @@ namespace ATM.Test.Unit
 {
     class DataSplitterTestUnit
     {
-
         private ITransponderReceiver _fakeTransponderReceiver;
         private DataSplitter _uut;
         private AirplaneArgs receivedArgs;

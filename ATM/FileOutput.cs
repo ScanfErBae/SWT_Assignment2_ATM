@@ -9,13 +9,14 @@ namespace ATM
 {
     public class FileOutput : IOutput
     {
+        public static string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Output.txt";
+
+        // Output filen ender på dit skrivebord!!!
+
         public void Print(Plane plane)
         {
             string content = "";
-            content = plane.CurrentTime.ToLongDateString() + " " + plane.CurrentTime.ToLongTimeString() + ":" + plane.CurrentTime.Millisecond + " Plane: " + plane.Tag + " Close to: " + plane.SeparationCond[0] + "\n";
-            string path = "";
-            //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
-            path = (Directory.GetCurrentDirectory() + @"\Output.txt");
+            content = plane.CurrentTime.ToLongDateString() + " Kl: " + plane.CurrentTime.Hour + ":" + plane.CurrentTime.Minute + ":" + plane.CurrentTime.Second + ":" + plane.CurrentTime.Millisecond + " Plane: " + plane.Tag + " Close to: " + plane.SeparationCond[0] + "\n";
             System.IO.File.AppendAllText(path, content);
         }
     }

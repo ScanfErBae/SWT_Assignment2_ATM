@@ -16,6 +16,9 @@ namespace ATM.Test.Unit
     class FileOutputTest
     {
         private FileOutput _uut;
+        public static string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Output.txt";
+
+        // Output filen ender på dit skrivebord!!!
 
         [SetUp]
         public void Setup()
@@ -27,10 +30,6 @@ namespace ATM.Test.Unit
         [TestCase("TestTag")]
         public void TestPrint(string tag)
         {
-            string path = "";
-            path = (Directory.GetCurrentDirectory() + @"\Output.txt");
-            //string path = "";
-            //path = @"C:\Users\Frederik\Documents\Uni\SWT\SWT_Assignment2_ATM\ATM\Output.txt";
             DateTime time = new DateTime(2019,10,29, 15, 55, 40, 200);
 
             Plane testPlane = new Plane
