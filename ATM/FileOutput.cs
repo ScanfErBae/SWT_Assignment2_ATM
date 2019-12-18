@@ -17,7 +17,7 @@ namespace ATM
         {
             string content = "";
             content = plane.CurrentTime.ToLongDateString() + " Kl: " + plane.CurrentTime.Hour + ":" + plane.CurrentTime.Minute + ":" + plane.CurrentTime.Second + ":" + plane.CurrentTime.Millisecond + " Plane: " + plane.Tag + " Close to: " + plane.SeparationCond[0] + "\n";
-            System.IO.File.AppendAllText(path, content);
+            System.IO.File.AppendAllText(path, "Hej");
         }
     }
 }

@@ -76,7 +76,7 @@ namespace ATM.Test.Unit
             sr.Close();
             fs.Close();
 
-            string expected = "Tuesday, 29 October, 2019 Kl: 15:55:40:200 Plane: TestTag Close to: ABC1234";
+            string expected = "Hej";
 
             StringAssert.Contains(str, expected);
 
